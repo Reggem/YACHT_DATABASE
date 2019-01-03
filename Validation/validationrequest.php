@@ -25,6 +25,14 @@
             <div class="h6 mt-5 text-center">
               Thank you for your request. I 'll will check if you are eligible for accessing this database and come back to you asap with your credentials.
             </div>
+            <br>
+            <div class="text-center">
+              You have submitted the following informations: <br>
+              <br>
+              Last Name: <b><?php echo $_POST['name']; ?></b><br>
+              First Name: <b><?php echo $_POST['fname']; ?></b><br>
+              Email: <b><?php echo $_POST['email']; ?></b><br>
+            </div>
 
          </div>
          <div class="col"></div>
