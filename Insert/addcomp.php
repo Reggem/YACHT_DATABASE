@@ -1,6 +1,27 @@
 <?php
 session_start();
+require("../config.php");
+
+
+
+$addcompName=$addindus=$addnbrEmp=$addcity="";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $addcompName = test_input($_POST["compname"]);
+    $addindus = test_input($_POST["industry"]);
+    $addcity = test_input($_POST["city"]);
+    $addnbrEmp = test_input($_POST["nbrEmp"]);
+  }
+
+function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -15,25 +36,7 @@ session_start();
     <title>addcomp</title>
   </head>
   <body>
-    <?php
 
-    $addcompName=$addindus=$addnbrEmp=$addcity="";
-
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $addcompName = test_input($_POST["compname"]);
-        $addindus = test_input($_POST["industry"]);
-        $addcity = test_input($_POST["city"]);
-        $addnbrEmp = test_input($_POST["nbrEmp"]);
-      }
-
-    function test_input($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-      }
-
-      ?>
 
     <div class="container">
       <div class="row">
@@ -41,10 +44,10 @@ session_start();
         <div class="col-9">
             <?php
             // echo "<pre>".print_r($_SESSION)."</pre>";
-            include("insert/newcomp.php");
+            include("../Insert/newcomp.php");
 
             try {
-              $connection=new PDO("mysql:host=".$_SESSION["DB_HOST"].";dbname=".$_SESSION["DB_NAME"],$_SESSION["username"],$_SESSION["password"]);
+              $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
               $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
               // Format for the query
@@ -74,8 +77,8 @@ session_start();
             }
 
 
-            echo "<div class='h6'>Query:</div> <br>".$sql;
-            echo "<div class='h6'>Query:</div> <br>".$sqllocatie;
+            echo "<div class='h6'>Query:</div> <br>".$sql."<br>";
+            echo "<div class='h6'>Query:</div> <br>".@$sqllocatie;
             ?>
         </div>
         <div class="col"></div>

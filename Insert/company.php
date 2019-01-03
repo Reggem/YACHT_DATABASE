@@ -30,9 +30,11 @@ try {
   </div>
   <div class="input-group mb-3">
     <!-- add a popup window when this button is pressed and show the form for the company insert (company_insert_form.php) -->
-    <button class="btn btn-primary" id="addCompbtn"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
-    </button>
+    <!-- <button class="btn btn-primary" id="addCompbtn"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
+    </button> -->
 
   </div>
 </form>
+<button class="btn btn-primary" onclick="addcomp()"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
+</button>
 </div>
