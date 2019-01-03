@@ -20,6 +20,7 @@
 
     <!-- Loginform -->
     <?php
+    include("navbarlogin.php");
       include("loginform.php");
     ?>
 
