@@ -35,6 +35,6 @@ try {
 
   </div>
 </form>
-<button class="btn btn-primary" onclick="addcomp()"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
+<button class="btn btn-primary" onclick="popupwindow()"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
 </button>
 </div>
