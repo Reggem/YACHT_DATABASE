@@ -31,13 +31,13 @@
         return $data;
       }
 
-      echo DB_NAME;
-      echo DB_USER;
-      echo DB_HOST;
+      // echo DB_NAME;
+      // echo DB_USER;
+      // echo DB_HOST;
       // $_SESSION["DB_HOST"] ="127.0.0.1:3308";
       // $_SESSION["DB_NAME"] ="yacht_trainees";
       $_SESSION["code"] = test_input($_POST["code"]);
-      echo "<pre>".print_r($_SESSION, true)."</pre>";
+      // echo "<pre>".print_r($_SESSION, true)."</pre>";
 
       try {
         $conn = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME, DB_USER, $_SESSION["code"], array(PDO::ATTR_PERSISTENT => true));

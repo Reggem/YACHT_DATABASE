@@ -69,9 +69,7 @@ try {
 
 
 ?>
-<div class="container">
-  <div class="row mt-5">
-    <div class="col">
+
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <div class="form-group">
@@ -132,8 +130,3 @@ try {
 
         <button type="submit" class="btn btn-primary">Query</button>
       </form>
-
-    </div>
-
- </div>
-</div>

@@ -48,18 +48,18 @@ require('../config.php');
       // echo '<pre>'.print_r($_SESSION)."</pre>";
       include("navbarselect.php");
     ?>
-
-    <!-- Form to select the fields we want to filter on -->
-    <?php
-
-      include("selectform.php");
-
-    ?>
-
-    <!-- Show the selection -->
     <div class="container">
-      <div class="row">
-        <div class="col  mt-2">
+      <div class="row mt-5">
+        <div class="col-md-3">
+
+          <!-- Form to select the fields we want to filter on -->
+            <?php
+
+              include("selectform.php");
+
+            ?>
+
+
             <?php
 
             try{
@@ -71,8 +71,8 @@ require('../config.php');
               echo "You have not yet selected any fields.";
             }
 
-              echo "<div class='h5'>You have selected:</div>
-              Cities: '".$incities."'<br> Industries:'".$inindustries."' <br> Companies: '".$incompanies."'<br>Departments: '".$indepartments."'";
+              // echo "<div class='h5'>You have selected:</div>
+              // Cities: '".$incities."'<br> Industries:'".$inindustries."' <br> Companies: '".$incompanies."'<br>Departments: '".$indepartments."'";
 
 
 
@@ -170,28 +170,20 @@ require('../config.php');
               }
             }
 
-              echo "<br><br><div class='h5'> Query:</div>";
-              echo $query;
+
 
 
           ?>
         </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row mt-2">
         <div class="col">
+
+      <!-- Results -->
+
           <!-- Perform the query and show the resulting table -->
           <?php
-          echo "<div class='h4'>Here are the results:</div> <br>";
 
-          // include('config.php');
 
           try {
-            // $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,$_SESSION["username"],$_SESSION["password"]);
-            // $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-            //
 
             if($query=="No query formed!"){
               echo "Try selecting filters to form a query.";
@@ -219,12 +211,22 @@ require('../config.php');
 
 
           ?>
+
+
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mt-5">
+        </div>
+        <div class="col">
+          <?php
+          echo "<br><br><div class='h5'> Query:</div>";
+          echo $query;
+          ?>
         </div>
       </div>
     </div>
-
-
-
 
 
 
