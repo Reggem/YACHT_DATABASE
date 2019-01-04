@@ -48,9 +48,9 @@ require('../config.php');
       // echo '<pre>'.print_r($_SESSION)."</pre>";
       include("navbarselect.php");
     ?>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row mt-5">
-        <div class="col-md-3">
+        <div class="col-md-2">
 
           <!-- Form to select the fields we want to filter on -->
             <?php
@@ -81,7 +81,7 @@ require('../config.php');
             if(!empty($companies[0])){
               // echo "the company is not empty: ".$companies[0];
 
-              $query="SELECT  b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+              $query="SELECT DISTINCT  b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
               FROM contacts c
               LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
               LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
@@ -90,7 +90,7 @@ require('../config.php');
               if(empty($departments[0]) and empty($cities[0])){
 
                 // echo "2";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
@@ -98,7 +98,7 @@ require('../config.php');
 
               }elseif(!empty($departments[0]) and empty($cities[0])){
                 // echo "3";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
@@ -106,7 +106,7 @@ require('../config.php');
               }
               elseif(empty($departments[0]) and !empty($cities[0])) {
                 // echo "4";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
@@ -120,49 +120,49 @@ require('../config.php');
                 // echo "<h4> No filters selected </h4>";
               }elseif(!empty($cities[0]) and empty($departments[0]) and empty($industries[0])){
                 // echo "6";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
                 WHERE (l.Stad IN ('".$incities."'));";
               }elseif(!empty($cities[0]) and !empty($departments[0]) and empty($industries[0])){
                 // echo "7";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
                 WHERE (l.Stad IN ('".$incities."') AND c.Afdeling IN ('".$indepartments."'));";
               }elseif(!empty($cities[0]) and empty($departments[0]) and !empty($industries[0])){
                 // echo "8";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
                 WHERE (l.Stad IN ('".$incities."') AND b.Industrie IN ('".$inindustries."'));";
               }elseif (!empty($cities[0]) and !empty($departments[0]) and !empty($industries[0])) {
                 // echo "9";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
                 WHERE (l.Stad IN ('".$incities."') AND b.Industrie IN ('".$inindustries."') AND c.Afdeling IN ('".$indepartments."'));";
               }elseif (empty($cities[0]) and !empty($departments[0]) and !empty($industries[0])) {
                 // echo "10";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
                 WHERE ( b.Industrie IN ('".$inindustries."') AND c.Afdeling IN ('".$indepartments."'));";
               }elseif(empty($cities[0]) and !empty($departments[0]) and empty($industries[0])){
                 // echo "11";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
                 WHERE (c.Afdeling IN ('".$indepartments."'));";
               }elseif(empty($cities[0]) and empty($departments[0]) and !empty($industries[0])){
                 // echo "12";
-                $query="SELECT b.Industrie, b.Bedrijf, l.Stad, c.Naam, c.Telefoon, c.Email,   c.Afdeling
+                $query="SELECT  DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
                 FROM contacts c
                 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
                 LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
@@ -180,7 +180,29 @@ require('../config.php');
       <!-- Results -->
 
           <!-- Perform the query and show the resulting table -->
-          <?php
+<?php
+
+  echo "<table style='border: solid 1px black;'>";
+   echo "<tr><th>Industry</th><th>Company</th><th>City</th><th>Name</th><th>First Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
+
+          class TableRows extends RecursiveIteratorIterator {
+                function __construct($it) {
+                    parent::__construct($it, self::LEAVES_ONLY);
+                }
+
+                function current() {
+                    return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                }
+
+                function beginChildren() {
+                    echo "<tr>";
+                }
+
+                function endChildren() {
+                    echo "</tr>" . "\n";
+                }
+            }
+
 
 
           try {
@@ -190,25 +212,29 @@ require('../config.php');
             }else{
               $sql=$connection->prepare($query);
               $sql->execute();
-              $result=$sql->fetchall();
+              $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
 
-              if(empty($result)){
-                echo "<div class='h3 text-secondary'> Query returned no results.</div>";
-              }else{
+            foreach(new TableRows(new RecursiveArrayIterator($sql->fetchAll())) as $k=>$v) {
+                echo $v;
+                  }
 
-                // Print the results of the query
-
-                echo "<pre>";
-                print_r($result);
-                echo "</pre>";
-
-              }
+              // if(empty($result)){
+              //   echo "<div class='h3 text-secondary'> Query returned no results.</div>";
+              // }else{
+              //
+              //   // Print the results of the query
+              //
+              //   echo "<pre>";
+              //   print_r($result);
+              //   echo "</pre>";
+              //
+              // }
             }
 
           } catch (PDOException $e) {
               echo "<div class='text-danger h6'>Echec connection</div>";
           }
-
+echo "</table>";
 
           ?>
 
