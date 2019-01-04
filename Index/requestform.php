@@ -1,6 +1,6 @@
 
 <!-- The action of the form should be to send a request by email to the database manager with the information so that he can grant access to the DB.  -->
-<form method="post" action="../Validation/validationrequest.php" class="border bg-light px-5 py-4 rounded shadow" action="../Validation/validationrequest.php">
+<form method="post" action="Validation/validationrequest.php" class="border bg-light px-5 py-4 rounded shadow" action="../Validation/validationrequest.php">
   <div class="h3 text-center">
 
   </div><br>

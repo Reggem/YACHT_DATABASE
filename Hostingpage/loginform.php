@@ -1,31 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col"></div>
 
+    <!-- FORM -->
+    <div class="col-9">
+        <form class="border mt-5 bg-light px-5 py-4 rounded shadow" method="post" action="../Hostingpage/hostingpage.php">
+          <div class="h3 text-center">
+            Fill in the form to log in
+          </div><br>
+          <div class="form-group">
+            <label for="user">User Code</label>
+            <input type="password" name="code" class="form-control" placeholder="User Code" required>
+          </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col"></div>
-
-        <!-- FORM -->
-        <div class="col-9">
-            <form class="border mt-5 bg-light px-5 py-4 rounded shadow" method="post" action="hostingpage.php">
-              <div class="h3 text-center">
-                Fill in the form to log in
-              </div><br>
-              <div class="form-group">
-                <label for="user">User Name</label>
-                <input type="text" name="user" class="form-control" placeholder="User Name" required>
-              </div>
-              <div class="form-group">
-                <label for="pass">Password</label>
-                <input type="password" name="pass" class="form-control" placeholder="Password" required>
-              </div>
-              <button type="submit" class="btn btn-primary text-center">Log In</button>
-            </form>
-        </div>
-
-        <div class="col"></div>
-
-      </div>
+          <button type="submit" class="btn btn-primary text-center">Log In</button>
+        </form>
     </div>
+
+    <div class="col"></div>
+
+  </div>
+</div>
 
 
 

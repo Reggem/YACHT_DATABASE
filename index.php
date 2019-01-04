@@ -61,7 +61,7 @@
     <!-- Insert Navbar  -->
     <?php
       // echo '<pre>'.print_r($_SESSION)."</pre>";
-      include("navbarwelcome.php");
+      include("Index/navbarwelcome.php");
     ?>
 
     <!-- Insert the text content  -->
@@ -89,7 +89,7 @@
             <!-- Insert the request form -->
 
             <?php
-              include("requestform.php");
+              include("Index/requestform.php");
             ?>
 
          </div>

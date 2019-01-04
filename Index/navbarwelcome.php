@@ -8,7 +8,7 @@
     </button>
 
     <!-- Login Button -->
-    <a href="../Login/login.php" class="ml-auto">
+    <a href="Login/login.php" class="ml-auto">
       <button class="nav navbar btn btn-success ml-auto" id="loginbtn"><i class="fas fa-sign-in-alt"></i><span class="mx-2">Log In</span>
       </button>
     </a>

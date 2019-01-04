@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
 
     <!-- Button to come back on home page -->
-    <a href="../Index/index.php">
+    <a href="../index.php">
       <div class="navbar-brand">YACHT Trainees</div>
     </a>
 
