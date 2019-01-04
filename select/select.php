@@ -38,7 +38,7 @@ require('../config.php');
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 
-    <title>Welcome page</title>
+    <title>Query the database</title>
   </head>
   <body>
 
@@ -179,64 +179,64 @@ require('../config.php');
 
       <!-- Results -->
 
-          <!-- Perform the query and show the resulting table -->
-<?php
+        <!-- Perform the query and show the resulting table -->
+        <?php
 
-  echo "<table style='border: solid 1px black;'>";
-   echo "<tr><th>Industry</th><th>Company</th><th>City</th><th>Name</th><th>First Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
+          echo "<table style='border: solid 1px black;'>";
+           echo "<tr><th>Industry</th><th>Company</th><th>City</th><th>Name</th><th>First Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
 
-          class TableRows extends RecursiveIteratorIterator {
-                function __construct($it) {
-                    parent::__construct($it, self::LEAVES_ONLY);
-                }
+                  class TableRows extends RecursiveIteratorIterator {
+                        function __construct($it) {
+                            parent::__construct($it, self::LEAVES_ONLY);
+                        }
 
-                function current() {
-                    return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-                }
+                        function current() {
+                            return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                        }
 
-                function beginChildren() {
-                    echo "<tr>";
-                }
+                        function beginChildren() {
+                            echo "<tr>";
+                        }
 
-                function endChildren() {
-                    echo "</tr>" . "\n";
-                }
-            }
+                        function endChildren() {
+                            echo "</tr>" . "\n";
+                        }
+                    }
 
 
 
-          try {
+                  try {
 
-            if($query=="No query formed!"){
-              echo "Try selecting filters to form a query.";
-            }else{
-              $sql=$connection->prepare($query);
-              $sql->execute();
-              $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
+                    if($query=="No query formed!"){
+                      echo "Try selecting filters to form a query.";
+                    }else{
+                      $sql=$connection->prepare($query);
+                      $sql->execute();
+                      $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
 
-            foreach(new TableRows(new RecursiveArrayIterator($sql->fetchAll())) as $k=>$v) {
-                echo $v;
+                    foreach(new TableRows(new RecursiveArrayIterator($sql->fetchAll())) as $k=>$v) {
+                        echo $v;
+                          }
+
+                      // if(empty($result)){
+                      //   echo "<div class='h3 text-secondary'> Query returned no results.</div>";
+                      // }else{
+                      //
+                      //   // Print the results of the query
+                      //
+                      //   echo "<pre>";
+                      //   print_r($result);
+                      //   echo "</pre>";
+                      //
+                      // }
+                    }
+
+                  } catch (PDOException $e) {
+                      echo "<div class='text-danger h6'>Echec connection</div>";
                   }
+          echo "</table>";
 
-              // if(empty($result)){
-              //   echo "<div class='h3 text-secondary'> Query returned no results.</div>";
-              // }else{
-              //
-              //   // Print the results of the query
-              //
-              //   echo "<pre>";
-              //   print_r($result);
-              //   echo "</pre>";
-              //
-              // }
-            }
-
-          } catch (PDOException $e) {
-              echo "<div class='text-danger h6'>Echec connection</div>";
-          }
-echo "</table>";
-
-          ?>
+        ?>
 
 
 
