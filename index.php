@@ -68,7 +68,7 @@
      <div class="container">
        <div class="row">
          <div class="col"></div>
-         <div class="col-5">
+         <div class="col-5 text-center">
             <div class="h6 mt-5">
               Welcom the the YACHT trainees database UI. THis web application is aimed at centralizing all information regarding the contact persons and companies that have been found or contacted by the trainees.
             </div>
@@ -81,15 +81,17 @@
             <br>
 
             <p class="h4 text-center">Not yet have credentials?</p>
-            <p class="h7 text-center"> Fill in the form below to request access. The database manager will grant you the credentials ASAP.</p>
+            <p class="h7 text-center">Click the button below to request access. The database manager will grant you the credentials ASAP.</p>
 
-
+            <button class="btn btn-primary ml-auto text-center"   data-toggle="modal" data-target="#CredentialsModal"><span class="mx-2">Request Credentials</span>
+            </button>
 
 
             <!-- Insert the request form -->
 
             <?php
-              include("Index/requestform.php");
+              // include("Index/requestform.php");
+              include('Index/modalcredentials.php');
             ?>
 
          </div>

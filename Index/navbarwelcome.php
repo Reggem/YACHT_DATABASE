@@ -8,10 +8,13 @@
     </button>
 
     <!-- Login Button -->
-    <a href="Login/login.php" class="ml-auto">
-      <button class="nav navbar btn btn-success ml-auto" id="loginbtn"><i class="fas fa-sign-in-alt"></i><span class="mx-2">Log In</span>
+    <!-- <a href="Login/login.php" class="ml-auto"> -->
+      <button class="nav navbar btn btn-success ml-auto" id="loginbtn" data-toggle="modal" data-target="#LoginModal"><i class="fas fa-sign-in-alt"></i><span class="mx-2">Log In</span>
       </button>
-    </a>
+    <!-- </a> -->
+    <?php
+      include("modallogin.php");
+    ?>
 
 
 </nav>
