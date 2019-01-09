@@ -62,113 +62,15 @@ require('../config.php');
 
             <?php
 
-            try{
+
               $incities = @implode("', '", $cities);
               $inindustries = @implode("', '", $industries);
               $incompanies = @implode("', '", $companies);
               $indepartments = @implode("', '", $departments);
-            }catch(Exception $e){
-              echo "You have not yet selected any fields.";
-            }
 
-              // echo "<div class='h5'>You have selected:</div>
-              // Cities: '".$incities."'<br> Industries:'".$inindustries."' <br> Companies: '".$incompanies."'<br>Departments: '".$indepartments."'";
+              //Include the queries
+              include("../SQL/queries.php");
 
-
-
-
-            // If company is selected by the user, we don't cara about the industry
-            if(!empty($companies[0])){
-              // echo "the company is not empty: ".$companies[0];
-
-              $query="SELECT DISTINCT  b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-              FROM contacts c
-              LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-              LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-              WHERE (l.Stad IN ('".$incities."') AND c.Afdeling IN ('".$indepartments."') AND b.Bedrijf IN ('".$incompanies."'));";
-
-              if(empty($departments[0]) and empty($cities[0])){
-
-                // echo "2";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE ( b.Bedrijf IN ('".$incompanies."'));";
-
-              }elseif(!empty($departments[0]) and empty($cities[0])){
-                // echo "3";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE ( c.Afdeling IN ('".$indepartments."') AND b.Bedrijf IN ('".$incompanies."'));";
-              }
-              elseif(empty($departments[0]) and !empty($cities[0])) {
-                // echo "4";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (l.Stad IN ('".$incities."') AND b.Bedrijf IN ('".$incompanies."'));";
-              }
-
-              // If the compnay is not specified by the suer
-            }else{
-              if (empty($cities[0]) and empty($departments[0]) and empty($industries[0])) {
-                $query="No query formed!";
-                // echo "<h4> No filters selected </h4>";
-              }elseif(!empty($cities[0]) and empty($departments[0]) and empty($industries[0])){
-                // echo "6";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (l.Stad IN ('".$incities."'));";
-              }elseif(!empty($cities[0]) and !empty($departments[0]) and empty($industries[0])){
-                // echo "7";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (l.Stad IN ('".$incities."') AND c.Afdeling IN ('".$indepartments."'));";
-              }elseif(!empty($cities[0]) and empty($departments[0]) and !empty($industries[0])){
-                // echo "8";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (l.Stad IN ('".$incities."') AND b.Industrie IN ('".$inindustries."'));";
-              }elseif (!empty($cities[0]) and !empty($departments[0]) and !empty($industries[0])) {
-                // echo "9";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (l.Stad IN ('".$incities."') AND b.Industrie IN ('".$inindustries."') AND c.Afdeling IN ('".$indepartments."'));";
-              }elseif (empty($cities[0]) and !empty($departments[0]) and !empty($industries[0])) {
-                // echo "10";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE ( b.Industrie IN ('".$inindustries."') AND c.Afdeling IN ('".$indepartments."'));";
-              }elseif(empty($cities[0]) and !empty($departments[0]) and empty($industries[0])){
-                // echo "11";
-                $query="SELECT DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (c.Afdeling IN ('".$indepartments."'));";
-              }elseif(empty($cities[0]) and empty($departments[0]) and !empty($industries[0])){
-                // echo "12";
-                $query="SELECT  DISTINCT b.Industrie, b.Bedrijf, l.Stad, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
-                FROM contacts c
-                LEFT JOIN bedrijven b on b.idCompany=c.Bedrijven_idCompany
-                LEFT JOIN locatie l on b.idCompany=l.Bedrijven_idCompany
-                WHERE (b.Industrie IN ('".$inindustries."'));";
-              }
-            }
 
 
 

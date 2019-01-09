@@ -25,4 +25,5 @@
   <a href="../index.php">
     <button class="nav navbar ml-auto btn btn-danger" type="submit"><i class="fas fa-sign-out-alt"></i><span class="mx-2">Log Out</span></button>
   </a>
+  </div>
 </nav>

@@ -1,40 +1,45 @@
-<?php
+<div class="col-md-2 col-sm-12" >
+  <button class="btn btn-primary" data-toggle="modal" data-target="#addcomp"><i class="far fa-plus-square"></i><span class="mx-3 h6">Add a company</span>
+  </button>
 
-try {
-  // require('config.php');
-  // $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,$_SESSION["username"],$_SESSION["password"]);
-  // $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-
-  // Get available Companies
-  $querycompanies="SELECT DISTINCT  b.Bedrijf
-  FROM bedrijven b;";
-
-  $sqlCompanies=$connection->prepare($querycompanies);
-  $sqlCompanies->execute();
-
-  $avCompanies=$sqlCompanies->fetchall();
-
-} catch (PDOException $e) {
-    echo "<div class='text-danger h6'>Echec connection</div>";
-}
-?>
+  <!-- Modal -->
+  <div class="modal fade" id="addcomp" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Company information</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
 
 
-<div class="col-md-3" >
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <form method="post" action="insert.php">
+              <div class="input-group mb-3">
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Company name" aria-label="Name" aria-describedby="basic-addon1" name="compname" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="industry" placeholder="Industry" required>
+                  </div>
+                  <div class="input-group mb-3">
+                    <input type="number" step="1" min="0" class="form-control" name="nbrEmp" placeholder="Number of employees">
+                  </div>
+              </div>
 
-  <div class="input-group mb-3">
-    <label for="bedrijf" class="h6">Add a company to the database if it does not yet exist:</label>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary" type="submit" name="companysubmit">
+                  <i class="far fa-plus-square"></i>
+                  <span class="mx-2">Save</span>
+                </button>
 
+            </form>
+
+
+        </div>
+
+      </div>
+    </div>
   </div>
-  <div class="input-group mb-3">
-    <!-- add a popup window when this button is pressed and show the form for the company insert (company_insert_form.php) -->
-    <!-- <button class="btn btn-primary" id="addCompbtn"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
-    </button> -->
-
-  </div>
-</form>
-<button class="btn btn-primary" onclick="popupwindow()"><i class="far fa-plus-square"></i><span class="mx-2">Add a company</span>
-</button>
 </div>
