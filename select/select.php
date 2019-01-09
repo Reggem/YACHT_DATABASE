@@ -13,8 +13,6 @@ require('../config.php');
       $companies = $_POST["company_select"];
       $cities = $_POST["city_select"];
       $departments = $_POST["department_select"];
-    }else{
-      echo "No query yet";
     }
 
 
@@ -62,7 +60,7 @@ require('../config.php');
     ?>
 
     <div class="container-fluid">
-      <div class="row mt-5">
+      <div class="row mt-3">
         <div class="col-md-2" >
 
           <!-- Form to select the fields we want to filter on -->
@@ -96,7 +94,7 @@ require('../config.php');
 
         <!-- Perform the query and show the resulting table -->
         <?php
-           echo "<br><br><div class='h5'> Query:</div>";
+           echo "<div class='h5'> Query:</div>";
            echo $query;
 
            if(isset($_POST["query"])){

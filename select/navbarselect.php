@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top ">
 
   <!-- Button to come back on home page -->
   <div class="navbar-brand">YACHT Trainees</div>

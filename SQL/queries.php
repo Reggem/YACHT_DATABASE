@@ -1,6 +1,8 @@
 <!-- Stores the queries to be made on select, insert and alter -->
+
+
 <?php
-// If company is selected by the user, we don't cara about the industry
+// If company is selected by the user, we don't car about the industry
 if(!empty($companies[0])){
   // echo "the company is not empty: ".$companies[0];
 
@@ -15,7 +17,7 @@ if(!empty($companies[0])){
     $query="SELECT DISTINCT b.Industrie, b.Bedrijf, c.Locatie, c.Naam,c.Voornaam, c.Telefoon, c.Email,   c.Afdeling
     FROM contacts c
     LEFT JOIN bedrijven b on b.idCompany=c.Bedrijf_idBedrijf
-    
+
     WHERE ( b.Bedrijf IN ('".$incompanies."'));";
 
   }elseif(!empty($departments[0]) and empty($cities[0])){
@@ -37,7 +39,7 @@ if(!empty($companies[0])){
 
   // If the compnay is not specified by the suer
 }else{
-  if (empty($cities[0]) and empty($departments[0]) and empty($industries[0])) {
+  if (empty($cities[0]) and empty($departments[0]) and empty($industries[0]) and empty($trainees[0])) {
     $query="No query formed!";
     // echo "<h4> No filters selected </h4>";
   }elseif(!empty($cities[0]) and empty($departments[0]) and empty($industries[0])){

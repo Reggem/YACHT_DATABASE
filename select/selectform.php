@@ -57,12 +57,12 @@
 ?>
 
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="sticky-top">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="sticky-top" style="top:80px; "   >
 
             <div class="form-group">
               <!-- Trainees -->
               <label for="industry_select">Trainee</label>
-              <select class="form-control custom-select" placeholder="Select a trainee" name="trainee_select[]" multiple>
+              <select class="form-control custom-select" placeholder="Select a trainee" name="trainee_select[]"  size="3" multiple>
                 <option value="" selected="selected">null</option>
                 <?php
                   for($i=0;$i<count($avTrainees);$i++){
@@ -76,7 +76,7 @@
             <div class="form-group">
               <!-- Industry -->
               <label for="industry_select">Industry</label>
-              <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" multiple>
+              <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" size="3" multiple>
                 <option value="" selected="selected">null</option>
                 <?php
                   for($i=0;$i<count($avIndustries);$i++){
@@ -90,7 +90,7 @@
             <div class="form-group">
               <!-- Company -->
               <label for="company_select">Company</label>
-              <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" multiple>
+              <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" size="3" multiple>
                 <option value="" selected="selected">null</option>
                 <?php
                   for($i=0;$i<count($avCompanies);$i++){
@@ -104,7 +104,7 @@
             <div class="form-group">
               <!-- Cities -->
               <label for="city_select">City</label>
-              <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" multiple>
+              <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" size="3" multiple>
                 <option value="" selected="selected">null</option>
                 <?php
                   for($i=0;$i<count($avCities);$i++){
@@ -118,7 +118,7 @@
             <div class="form-group">
               <!-- Deparmtents -->
               <label for="department_select">Department</label>
-              <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" multiple>
+              <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" size="3" multiple>
                 <option value="" selected="selected">null</option>
                 <?php
                   for($i=0;$i<count($avDepartments);$i++){
