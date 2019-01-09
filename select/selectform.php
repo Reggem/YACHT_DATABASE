@@ -1,13 +1,10 @@
 
 <?php
 
-try {
-  $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
-  $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
   // Get available Industries
-  $querytrainees="SELECT DISTINCT  CONCAT_WS(' ',Voornaam,Naam)
-  FROM trainees;";
+  $querytrainees="SELECT DISTINCT  CONCAT_WS(' ',Voornaam,Naam) as Trainee
+  FROM trainees
+  ORDER BY Trainee;";
 
   $sqltrainees=$connection->prepare($querytrainees);
   $sqltrainees->execute();
@@ -16,7 +13,8 @@ try {
 
   // Get available Companies
   $querycompanies="SELECT DISTINCT  b.Bedrijf
-  FROM bedrijven b;";
+  FROM bedrijven b
+  ORDER BY b.Bedrijf;";
 
   $sqlCompanies=$connection->prepare($querycompanies);
   $sqlCompanies->execute();
@@ -26,7 +24,8 @@ try {
 
   // Get available Industries
   $queryindustries="SELECT DISTINCT  b.Industrie
-  FROM bedrijven b;";
+  FROM bedrijven b
+  ORDER BY b.Industrie;";
 
   $sqlindustries=$connection->prepare($queryindustries);
   $sqlindustries->execute();
@@ -36,7 +35,8 @@ try {
 
   // Get available Cities
   $querycity="SELECT DISTINCT c.Locatie
-  FROM contacts c;";
+  FROM contacts c
+  ORDER BY c.Locatie;";
 
   $sqlCities=$connection->prepare($querycity);
   $sqlCities->execute();
@@ -46,81 +46,90 @@ try {
 
   // Get available departments
   $queryDepartments="SELECT DISTINCT c.Afdeling
-  FROM contacts c;";
+  FROM contacts c
+  ORDER BY c.Afdeling;";
 
   $sqldepartments=$connection->prepare($queryDepartments);
   $sqldepartments->execute();
 
   $avDepartments=$sqldepartments->fetchall();
 
-
-
-
-
-} catch (PDOException $e) {
-    echo "<div class='text-danger h6'>Echec connection</div>";
-}
-
-
 ?>
 
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-        <div class="form-group">
-          <!-- Industry -->
-          <label for="industry_select">Industry</label>
-          <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" size="1" multiple>
-            <option value="" selected="selected">null</option>
-            <?php
-              for($i=0;$i<count($avIndustries);$i++){
-                echo '<option value="'.$avIndustries[$i]["Industrie"] .'">'.$avIndustries[$i]["Industrie"].'</option>';
-              }
-             ?>
-          </select>
-        </div>
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="sticky-top">
+
+            <div class="form-group">
+              <!-- Trainees -->
+              <label for="industry_select">Trainee</label>
+              <select class="form-control custom-select" placeholder="Select a trainee" name="trainee_select[]" multiple>
+                <option value="" selected="selected">null</option>
+                <?php
+                  for($i=0;$i<count($avTrainees);$i++){
+                    echo '<option value="'.$avTrainees[$i]["Trainee"] .'">'.$avTrainees[$i]["Trainee"].'</option>';
+                  }
+                 ?>
+              </select>
+            </div>
 
 
-        <div class="form-group">
-          <!-- Company -->
-          <label for="company_select">Company</label>
-          <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" multiple>
-            <option value="" selected="selected">null</option>
-            <?php
-              for($i=0;$i<count($avCompanies);$i++){
-                echo '<option value="'.$avCompanies[$i]["Bedrijf"].'">'.$avCompanies[$i]["Bedrijf"].'</option>';
-              }
-             ?>
-          </select>
-        </div>
+            <div class="form-group">
+              <!-- Industry -->
+              <label for="industry_select">Industry</label>
+              <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" multiple>
+                <option value="" selected="selected">null</option>
+                <?php
+                  for($i=0;$i<count($avIndustries);$i++){
+                    echo '<option value="'.$avIndustries[$i]["Industrie"] .'">'.$avIndustries[$i]["Industrie"].'</option>';
+                  }
+                 ?>
+              </select>
+            </div>
 
 
-        <div class="form-group">
-          <!-- Cities -->
-          <label for="city_select">City</label>
-          <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" multiple>
-            <option value="" selected="selected">null</option>
-            <?php
-              for($i=0;$i<count($avCities);$i++){
-                echo '<option value="'.$avCities[$i]["Stad"] .'">'.$avCities[$i]["Locatie"].'</option>';
-              }
-             ?>
-          </select>
-        </div>
+            <div class="form-group">
+              <!-- Company -->
+              <label for="company_select">Company</label>
+              <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" multiple>
+                <option value="" selected="selected">null</option>
+                <?php
+                  for($i=0;$i<count($avCompanies);$i++){
+                    echo '<option value="'.$avCompanies[$i]["Bedrijf"].'">'.$avCompanies[$i]["Bedrijf"].'</option>';
+                  }
+                 ?>
+              </select>
+            </div>
 
 
-        <div class="form-group">
-          <!-- Deparmtents -->
-          <label for="department_select">Department</label>
-          <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" multiple>
-            <option value="" selected="selected">null</option>
-            <?php
-              for($i=0;$i<count($avDepartments);$i++){
-                echo '<option value="'.$avDepartments[$i]["Afdeling"] .'">'.$avDepartments[$i]["Afdeling"].'</option>';
-              }
-             ?>
-          </select>
-        </div>
+            <div class="form-group">
+              <!-- Cities -->
+              <label for="city_select">City</label>
+              <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" multiple>
+                <option value="" selected="selected">null</option>
+                <?php
+                  for($i=0;$i<count($avCities);$i++){
+                    echo '<option value="'.$avCities[$i]["Stad"] .'">'.$avCities[$i]["Locatie"].'</option>';
+                  }
+                 ?>
+              </select>
+            </div>
 
 
-        <button type="submit" class="btn btn-primary">Query</button>
+            <div class="form-group">
+              <!-- Deparmtents -->
+              <label for="department_select">Department</label>
+              <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" multiple>
+                <option value="" selected="selected">null</option>
+                <?php
+                  for($i=0;$i<count($avDepartments);$i++){
+                    echo '<option value="'.$avDepartments[$i]["Afdeling"] .'">'.$avDepartments[$i]["Afdeling"].'</option>';
+                  }
+                 ?>
+              </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-secondary h6" name="inspect">Inspect</button>
+            <button type="submit" class="btn btn-primary h6" name="query">Query</button>
+
       </form>

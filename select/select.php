@@ -1,17 +1,20 @@
 <?php
 session_start();
 require('../config.php');
+// require('../SQL/queries');
 
 // <!-- Define variables and clean function  -->
 
 
   $companies=$industries=$cities=$departments="";
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  if (isset($_POST["query"]) or isset($_POST["inspect"]) ) {
       $industries = $_POST["industry_select"];
       $companies = $_POST["company_select"];
       $cities = $_POST["city_select"];
       $departments = $_POST["department_select"];
+    }else{
+      echo "No query yet";
     }
 
 
@@ -22,6 +25,15 @@ require('../config.php');
     $data = htmlspecialchars($data);
     return $data;
   }
+
+  //Connect to the database
+  try {
+    $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
+    $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      echo "<div class='text-danger h6'>Echec connection</div>";
+  }
+
 
 
 
@@ -48,9 +60,10 @@ require('../config.php');
       // echo '<pre>'.print_r($_SESSION)."</pre>";
       include("navbarselect.php");
     ?>
+
     <div class="container-fluid">
       <div class="row mt-5">
-        <div class="col-md-2">
+        <div class="col-md-2" >
 
           <!-- Form to select the fields we want to filter on -->
             <?php
@@ -83,79 +96,81 @@ require('../config.php');
 
         <!-- Perform the query and show the resulting table -->
         <?php
+           echo "<br><br><div class='h5'> Query:</div>";
+           echo $query;
 
-          echo "<table style='border: solid 1px black;'>";
-           echo "<tr><th>Industry</th><th>Company</th><th>City</th><th>Name</th><th>First Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
+           if(isset($_POST["query"])){
 
-                  class TableRows extends RecursiveIteratorIterator {
-                        function __construct($it) {
-                            parent::__construct($it, self::LEAVES_ONLY);
-                        }
+                 if($query!="No query formed!"){
 
-                        function current() {
-                            return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
-                        }
+                         echo "<br><br><table style='border: solid 1px black;'>";
+                         echo "<tr><th>Industry</th><th>Company</th><th>City</th><th>Name</th><th>First Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
 
-                        function beginChildren() {
-                            echo "<tr>";
-                        }
+                         class TableRows extends RecursiveIteratorIterator {
+                           function __construct($it) {
+                             parent::__construct($it, self::LEAVES_ONLY);
+                           }
 
-                        function endChildren() {
-                            echo "</tr>" . "\n";
-                        }
-                    }
+                           function current() {
+                             return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                           }
+
+                           function beginChildren() {
+                             echo "<tr>";
+                           }
+
+                           function endChildren() {
+                             echo "</tr>" . "\n";
+                           }
+                         }
+
+                         $sql=$connection->prepare($query);
+                         $sql->execute();
+                         $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
+
+                         if(!empty($result)){
+                           foreach(new TableRows(new RecursiveArrayIterator($sql->fetchAll())) as $k=>$v) {
+                             echo $v;
+                           }
+                         }
 
 
 
-                  try {
+                       try {
 
-                    if($query=="No query formed!"){
-                      echo "Try selecting filters to form a query.";
-                    }else{
-                      $sql=$connection->prepare($query);
-                      $sql->execute();
-                      $result=$sql->setFetchMode(PDO::FETCH_ASSOC);
+                         if($query=="No query formed!"){
+                           echo "Try selecting filters to form a query.";
+                         }else{
 
-                    foreach(new TableRows(new RecursiveArrayIterator($sql->fetchAll())) as $k=>$v) {
-                        echo $v;
-                          }
+                           if(isset($_POST["query"])){
 
-                      // if(empty($result)){
-                      //   echo "<div class='h3 text-secondary'> Query returned no results.</div>";
-                      // }else{
-                      //
-                      //   // Print the results of the query
-                      //
-                      //   echo "<pre>";
-                      //   print_r($result);
-                      //   echo "</pre>";
-                      //
-                      // }
-                    }
+                             }
+                             else{
+                               echo "<div class='h6 text-secondary'>The query returned 0 results</div>";
+                             }
+                           }
+                         }
+                        catch (PDOException $e) {
+                         echo "<div class='text-danger h6'>Echec connection</div>";
+                       }
 
-                  } catch (PDOException $e) {
-                      echo "<div class='text-danger h6'>Echec connection</div>";
-                  }
-          echo "</table>";
+                       echo "</table>";
+
+               }else{
+                 echo " Select fields to form a query";
+               }
+             }elseif(isset($_POST["inspect"])){
+               if($query!="No query formed!"){
+                 echo $query;
+               }else{
+                 echo " Select fields to form a query";
+             }
+
+             }
+
+
 
         ?>
-
-
-
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-3 mt-5">
-        </div>
-        <div class="col">
-          <?php
-          echo "<br><br><div class='h5'> Query:</div>";
-          echo $query;
-          ?>
-        </div>
-      </div>
-    </div>
-
 
 
 
