@@ -86,14 +86,18 @@ require('../config.php');
         <!-- Perform the query and show the resulting table -->
         <?php
            echo "<div class='h5'> Query:</div>";
-           echo $query;
+
 
            if(isset($_POST["query"])){
 
+
                  if($query!="No query formed!"){
+                          // If the query has seleted elements --> display the table
+
+                         echo $query;
 
                          echo "<br><br><table style='border: solid 1px black;'>";
-                         echo "<tr><th>Company</th><th>City</th><th>Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
+                         echo "<tr><th>Company</th><th>City</th><th>Name</th><th>Function</th><th>Telephone</th><th>Email</th><th>Department</th>";
 
                          class TableRows extends RecursiveIteratorIterator {
                            function __construct($it) {
@@ -123,36 +127,20 @@ require('../config.php');
                            }
                          }
 
+                         echo "</table>";
+                    }
+                    else{
+                      echo "Try selecting filters to form a query.";
+                    }
 
 
-                       try {
 
-                         if($query=="No query formed!"){
-                           echo "Try selecting filters to form a query.";
-                         }else{
 
-                           if(isset($_POST["query"])){
-
-                             }
-                             else{
-                               echo "<div class='h6 text-secondary'>The query returned 0 results</div>";
-                             }
-                           }
-                         }
-                        catch (PDOException $e) {
-                         echo "<div class='text-danger h6'>Echec connection</div>";
-                       }
-
-                       echo "</table>";
-
-               }else{
-                 echo " Select fields to form a query";
-               }
              }elseif(isset($_POST["inspect"])){
                if($query!="No query formed!"){
                  echo $query;
-               }else{
-                 echo " Select fields to form a query";
+                 }else{
+                 echo " Try selecting filters to form a query";
              }
 
              }

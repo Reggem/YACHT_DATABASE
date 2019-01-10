@@ -108,7 +108,7 @@
                 <option value="" selected="selected">null</option>
                 <?php
                   for($i=0;$i<count($avCities);$i++){
-                    echo '<option value="'.$avCities[$i]["Stad"] .'">'.$avCities[$i]["Locatie"].'</option>';
+                    echo '<option value="'.$avCities[$i]["Locatie"] .'">'.$avCities[$i]["Locatie"].'</option>';
                   }
                  ?>
               </select>
