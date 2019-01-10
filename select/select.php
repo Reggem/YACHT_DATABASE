@@ -85,7 +85,7 @@ require('../config.php');
 
         <!-- Perform the query and show the resulting table -->
         <?php
-           echo "<div class='h5'> Query:</div>";
+
 
 
            if(isset($_POST["query"])){
@@ -94,10 +94,13 @@ require('../config.php');
                  if($query!="No query formed!"){
                           // If the query has seleted elements --> display the table
 
-                         echo $query;
+                         // echo "<div class='h5'> Query:</div>";
+                         // echo $query;
 
-                         echo "<br><br><table style='border: solid 1px black;'>";
-                         echo "<tr><th>Company</th><th>City</th><th>Name</th><th>Function</th><th>Telephone</th><th>Email</th><th>Department</th>";
+
+                        // style='border: solid 1px black;'
+                         echo "<div class='table-responsive'><table class='table table-hover'>";
+                         echo "<thead class='thead-light'><tr><th scope='col'>Company</th><th scope='col'>City</th><th scope='col'>Name</th><th scope='col'>Function</th><th scope='col'>Telephone</th><th scope='col'>Email</th><th scope='col'>Department</th></thead><tbody>";
 
                          class TableRows extends RecursiveIteratorIterator {
                            function __construct($it) {
@@ -105,7 +108,7 @@ require('../config.php');
                            }
 
                            function current() {
-                             return "<td style='width: 150px; border: 1px solid black;'>" . parent::current(). "</td>";
+                             return "<td scope='row'>" . parent::current(). "</td>";
                            }
 
                            function beginChildren() {
@@ -127,7 +130,7 @@ require('../config.php');
                            }
                          }
 
-                         echo "</table>";
+                         echo "</tbody></table></div>";
                     }
                     else{
                       echo "Try selecting filters to form a query.";
@@ -141,8 +144,10 @@ require('../config.php');
                  echo $query;
                  }else{
                  echo " Try selecting filters to form a query";
-             }
+                  }
 
+             }else{
+               echo "<div class='text-center text-muted h1 align-middle'>NO QUERY</div>";
              }
         ?>
         </div>

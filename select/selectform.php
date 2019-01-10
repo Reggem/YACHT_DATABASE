@@ -2,8 +2,8 @@
 <?php
 
   // Get available Industries
-  $querytrainees="SELECT DISTINCT  CONCAT_WS(' ',Voornaam,Naam) as Trainee
-  FROM trainees
+  $querytrainees="SELECT DISTINCT ToegevoegdDoor as Trainee
+  FROM contacts
   ORDER BY Trainee;";
 
   $sqltrainees=$connection->prepare($querytrainees);
@@ -36,6 +36,7 @@
   // Get available Cities
   $querycity="SELECT DISTINCT c.Locatie
   FROM contacts c
+  WHERE NOT c.Locatie='-'
   ORDER BY c.Locatie;";
 
   $sqlCities=$connection->prepare($querycity);
@@ -47,6 +48,7 @@
   // Get available departments
   $queryDepartments="SELECT DISTINCT c.Afdeling
   FROM contacts c
+  WHERE NOT c.Afdeling=''
   ORDER BY c.Afdeling;";
 
   $sqldepartments=$connection->prepare($queryDepartments);
@@ -63,7 +65,7 @@
               <!-- Trainees -->
               <label for="industry_select">Trainee</label>
               <select class="form-control custom-select" placeholder="Select a trainee" name="trainee_select[]"  size="3" multiple>
-                <option value="" selected="selected">null</option>
+                <option value="" selected="selected">-</option>
                 <?php
                   for($i=0;$i<count($avTrainees);$i++){
                     echo '<option value="'.$avTrainees[$i]["Trainee"] .'">'.$avTrainees[$i]["Trainee"].'</option>';
@@ -77,7 +79,7 @@
               <!-- Industry -->
               <label for="industry_select">Industry</label>
               <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" size="3" multiple>
-                <option value="" selected="selected">null</option>
+                <option value="" selected="selected">-</option>
                 <?php
                   for($i=0;$i<count($avIndustries);$i++){
                     echo '<option value="'.$avIndustries[$i]["Industrie"] .'">'.$avIndustries[$i]["Industrie"].'</option>';
@@ -91,7 +93,7 @@
               <!-- Company -->
               <label for="company_select">Company</label>
               <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" size="3" multiple>
-                <option value="" selected="selected">null</option>
+                <option value="" selected="selected">-</option>
                 <?php
                   for($i=0;$i<count($avCompanies);$i++){
                     echo '<option value="'.$avCompanies[$i]["Bedrijf"].'">'.$avCompanies[$i]["Bedrijf"].'</option>';
@@ -105,10 +107,10 @@
               <!-- Cities -->
               <label for="city_select">City</label>
               <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" size="3" multiple>
-                <option value="" selected="selected">null</option>
+                <option value="" selected="selected">-</option>
                 <?php
                   for($i=0;$i<count($avCities);$i++){
-                    echo '<option value="'.$avCities[$i]["Locatie"] .'">'.$avCities[$i]["Locatie"].'</option>';
+                      echo '<option value="'.$avCities[$i]["Locatie"] .'">'.$avCities[$i]["Locatie"].'</option>';
                   }
                  ?>
               </select>
@@ -119,7 +121,7 @@
               <!-- Deparmtents -->
               <label for="department_select">Department</label>
               <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" size="3" multiple>
-                <option value="" selected="selected">null</option>
+                <option value="" selected="selected">-</option>
                 <?php
                   for($i=0;$i<count($avDepartments);$i++){
                     echo '<option value="'.$avDepartments[$i]["Afdeling"] .'">'.$avDepartments[$i]["Afdeling"].'</option>';
@@ -129,7 +131,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-secondary h6" name="inspect">Inspect</button>
+            <!-- <button type="submit" class="btn btn-secondary h6" name="inspect">Inspect</button> -->
             <button type="submit" class="btn btn-primary h6" name="query">Query</button>
 
       </form>
