@@ -1,5 +1,5 @@
-<div class="col-md-2 col-sm-12" >
-  <button class="btn btn-primary" data-toggle="modal" data-target="#addcomp"><i class="far fa-plus-square"></i><span class="mx-3 h6">Add a company</span>
+<div class="col-md-2 col-sm-12 mb-3 pl-4 text-center" >
+  <button class="btn btn-primary mt-5 mb-3" data-toggle="modal" data-target="#addcomp"><i class="far fa-plus-square"></i><span class="mx-3 h6">Add a company</span>
   </button>
 
   <!-- Modal -->
