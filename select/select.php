@@ -6,9 +6,10 @@ require('../config.php');
 // <!-- Define variables and clean function  -->
 
 
-  $companies=$industries=$cities=$departments="";
+  $companies=$industries=$cities=$departments=$trainees="";
 
   if (isset($_POST["query"]) or isset($_POST["inspect"]) ) {
+      $trainees=$_POST["trainee_select"];
       $industries = $_POST["industry_select"];
       $companies = $_POST["company_select"];
       $cities = $_POST["city_select"];
@@ -42,11 +43,9 @@ require('../config.php');
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!-- Font awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <?php
+    include("../stylesheets.php");
+    ?>
 
     <title>Query the database</title>
   </head>
@@ -65,28 +64,20 @@ require('../config.php');
 
           <!-- Form to select the fields we want to filter on -->
             <?php
-
               include("selectform.php");
-
             ?>
 
 
             <?php
-
-
               $incities = @implode("', '", $cities);
               $inindustries = @implode("', '", $industries);
               $incompanies = @implode("', '", $companies);
               $indepartments = @implode("', '", $departments);
+              $intrainees= @implode("', '", $trainees);
 
               //Include the queries
               include("../SQL/queries.php");
-
-
-
-
-
-          ?>
+            ?>
         </div>
         <div class="col">
 
@@ -102,7 +93,7 @@ require('../config.php');
                  if($query!="No query formed!"){
 
                          echo "<br><br><table style='border: solid 1px black;'>";
-                         echo "<tr><th>Industry</th><th>Company</th><th>City</th><th>Name</th><th>First Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
+                         echo "<tr><th>Company</th><th>City</th><th>Name</th><th>Telephone</th><th>Email</th><th>Department</th>";
 
                          class TableRows extends RecursiveIteratorIterator {
                            function __construct($it) {
@@ -165,25 +156,11 @@ require('../config.php');
              }
 
              }
-
-
-
         ?>
+        </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      <?php
+        include("../jssheets.php");
+      ?>
   </body>
 </html>
