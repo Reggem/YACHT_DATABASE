@@ -46,9 +46,9 @@
               <label for="company_select">Company</label>
               <select class="form-control custom-select" placeholder="Select a company" name="company_select" size="3" >
                 <?php
-                  for($i=0;$i<count($avCompanies);$i++){
-                    echo '<option value="'.$avCompanies[$i]["Bedrijf"] .'">'.$avCompanies[$i]["Bedrijf"].'</option>';
-                  }
+                  // for($i=0;$i<count($avCompanies);$i++){
+                  //   echo '<option value="'.$avCompanies[$i]["Bedrijf"] .'">'.$avCompanies[$i]["Bedrijf"].'</option>';
+                  // }
                  ?>
               </select>
             </div> -->

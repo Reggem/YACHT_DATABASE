@@ -55,7 +55,9 @@ try {
     <div class="form-group mb-3">
         <label for="trainee">Added by</label>
         <select name="trainee" class="form-control" placeholder="Toegevoegd door" required>
-          <option value="" selected disabled><?php echo $result_array["ToegevoegdDoor"]; ?></option>
+          <option value="<?php echo $result_array["ToegevoegdDoor"]?>" selected>
+            <?php echo $result_array["ToegevoegdDoor"]; ?>
+          </option>
           <?php
             for($i=0;$i<count($avTrainees);$i++){
               echo '<option value="'.$avTrainees[$i]["Trainee"].'">'.$avTrainees[$i]["Trainee"].'</option>';
@@ -64,9 +66,11 @@ try {
         </select>
     </div>
     <div class="form-group mb-3">
-        <label for="trainee">Company</label>
-        <select name="bedrijf" class="form-control" placeholder="Select a company" required>
-          <option value="" selected disabled><?php echo $selectedCompany; ?></option>
+        <label for="company">Company</label>
+        <select name="company" class="form-control" placeholder="Select a company" required>
+          <option value="<?php echo $selectedCompany; ?>" selected>
+            <?php echo $selectedCompany; ?>
+          </option>
           <?php
             for($i=0;$i<count($avCompanies);$i++){
               echo '<option value="'.$avCompanies[$i]["Bedrijf"].'">'.$avCompanies[$i]["Bedrijf"].'</option>';
@@ -78,13 +82,13 @@ try {
       <div class="col">
           <div class="form-group mb-3">
             <label for="trainee">First Name</label>
-            <input type="text" class="form-control" placeholder="<?php echo $result_array["Voornaam"]; ?>" aria-label="Voornaam" aria-describedby="basic-addon1" name="voornaam" required>
+            <input type="text" class="form-control" value="<?php echo $result_array["Voornaam"]; ?>"  aria-label="Voornaam" aria-describedby="basic-addon1" name="voornaam" required>
           </div>
       </div>
       <div class="col">
           <div class="form-group mb-3">
             <label for="trainee">Last Name</label>
-            <input type="text" class="form-control" placeholder="<?php echo $result_array["Naam"]; ?>" aria-label="Naam" aria-describedby="basic-addon1" name="naam" required>
+            <input type="text" class="form-control" value="<?php echo $result_array["Naam"]; ?>" aria-label="Naam" aria-describedby="basic-addon1" name="naam" required>
           </div>
       </div>
     </div>
@@ -92,19 +96,19 @@ try {
       <div class="col">
         <div class="form-group mb-3">
             <label for="trainee">Function</label>
-          <input type="text" class="form-control" placeholder="<?php echo $result_array["Functie"]; ?>" aria-label="Functie" aria-describedby="basic-addon2"  name="functie">
+          <input type="text" class="form-control" value="<?php echo $result_array["Functie"]; ?>" aria-label="Functie" aria-describedby="basic-addon2"  name="functie">
         </div>
       </div>
       <div class="col">
         <div class="form-group mb-3">
             <label for="trainee">Department</label>
-          <input type="text" class="form-control" placeholder="<?php echo $result_array["Afdeling"]; ?>" aria-label="Afdeling" aria-describedby="basic-addon2"  name="department">
+          <input type="text" class="form-control" value="<?php echo $result_array["Afdeling"]; ?>" aria-label="Afdeling" aria-describedby="basic-addon2"  name="department">
         </div>
       </div>
       <div class="col">
         <div class="form-group mb-3">
             <label for="trainee">Location</label>
-          <input type="text" class="form-control" placeholder="<?php echo $result_array["Locatie"]; ?>" aria-label="Locatie" aria-describedby="basic-addon2"  name="locatie">
+          <input type="text" class="form-control" value="<?php echo $result_array["Locatie"]; ?>" aria-label="Locatie" aria-describedby="basic-addon2"  name="locatie">
         </div>
       </div>
     </div>
@@ -112,30 +116,24 @@ try {
       <div class="input-group-append">
         <span class="input-group-text">@</span>
       </div>
-      <input type="email" class="form-control" placeholder="<?php echo $result_array["Email"]; ?>" aria-label="Email" aria-describedby="basic-addon2" name="email">
+      <input type="email" class="form-control" value="<?php echo $result_array["Email"]; ?>" aria-label="Email" aria-describedby="basic-addon2" name="email">
     </div>
     <div class="input-group mb-3">
       <div class="input-group-append">
         <span class="input-group-text" ><i class="fas fa-phone"></i></span>
       </div>
-      <input type="text" class="form-control" placeholder="<?php echo $result_array["Telefoon"]; ?>" aria-label="Telefoon" aria-describedby="basic-addon2"  name="Telefoon">
+      <input type="text" class="form-control" value="<?php echo $result_array["Telefoon"]; ?>" aria-label="Telefoon" aria-describedby="basic-addon2"  name="Telefoon">
     </div>
     <div class="input-group mb-3">
       <div class="input-group-append">
         <span class="input-group-text"><i class="fab fa-linkedin"></i></span>
       </div>
-      <input type="text" class="form-control" placeholder="<?php echo $result_array["LinkedIn"]; ?>" aria-label="LinkedIn URL" aria-describedby="basic-addon2"  name="linkedin">
+      <input type="text" class="form-control" value="<?php echo $result_array["LinkedIn"]; ?>" aria-label="LinkedIn URL" aria-describedby="basic-addon2"  name="linkedin">
     </div>
-
-    <!-- When clicked a modal opens -->
-
-    <!-- <button class="btn btn-secondary " type="submit"  name="inspectadd" id="inspectqueryadd" data-toggle="modal" data-target="#myModal"><span class="mx-3 h6">Inspect query</span></button> -->
-
-
 
 
     <!--  wen clicked the query is executed-->
-    <button class="btn btn-primary " type="submit" aria-pressed="true" name="contactsubmit"><span class="mx-3 h6">Update contact</span></button>
+    <button class="btn btn-primary " type="submit" aria-pressed="true" name="contactupdate"><span class="mx-3 h6">Update contact</span></button>
 
     <!-- When clicked the contact is deleted -->
     <button class="btn btn-secondary " type="submit" aria-pressed="true" name="contactdelete"><i class="fas fa-trash-alt"></i><span class="mx-3 h6">Delete contact</span></button>

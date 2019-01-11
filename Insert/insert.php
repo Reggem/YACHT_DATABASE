@@ -152,41 +152,16 @@
                 $new_tab="'".implode("', '", $tab)."'";
 
 
-                // Insert the contact only when we have pressed the submit button
-
                 // if(isset())
                 $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Bedrijf_idBedrijf)
                  SELECT $new_tab, idCompany FROM bedrijven WHERE Bedrijf='$bedrijf';";
 
 
-                ?>
-
-
-                <?php
                 //execute the query only if we click submit
                 if(isset($_POST["contactsubmit"])){
                   $insert=$connection->prepare($sqlcont);
                   $insert->execute();
                 }
-
-                // //Inspect the query
-                // if(isset($_POST["inspectadd"])){
-                //   echo '
-                //   <div class="row mt-5">
-                //   <div class="col-md-3 col-sm-12" >
-                //   </div>
-                //   <div class="col-md-9 col-sm-12">
-                //     <div class="h6"><b> Query: </b> <br></div>
-                //   ';
-                //   $insert=$connection->prepare($sqlcont);
-                //   echo $sqlcont;
-                //
-                //   echo'  </div>
-                //   </div>
-                //   </div>';
-                //
-                // }
-
 
 
 

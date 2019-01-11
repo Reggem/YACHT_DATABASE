@@ -13,12 +13,23 @@
   $contactname_selected=$company_selected="";
 
   if(isset($_POST["search"])){
-    $contactname_selected=$_POST["contact_select"];
+      $contactname_selected=$_POST["contact_select"];
 
-    if(isset($_POST["company_select"])){
-      $company_selected=$_POST["company_select"];
-    }
+    // if(isset($_POST["company_select"])){
+    //   $company_selected=$_POST["company_select"];
+    // }
   }
+
+  //Update the contact if we have clicked the update button
+  if(isset($_POST["contactupdate"])){
+
+    include("../SQL/updatequery.php");
+  }
+
+  if(isset($_POST["contactdelete"])){
+    include("../SQL/deletequery.php");
+  }
+
 
 
 ?>
