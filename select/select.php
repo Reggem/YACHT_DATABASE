@@ -76,7 +76,7 @@ require('../config.php');
               $intrainees= @implode("', '", $trainees);
 
               //Include the queries
-              include("../SQL/queries.php");
+              include("../SQL/queriesselect.php");
             ?>
         </div>
         <div class="col">

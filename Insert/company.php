@@ -2,7 +2,7 @@
   <div class="text-muted b text-justify mt-3">
     Add a company to the database if you cannot find it in the list in the contact form.
   </div>
-  <button class="btn btn-primary mt-5 mb-3" data-toggle="modal" data-target="#addcomp"><i class="far fa-plus-square"></i><span class="mx-3 h6">Add a company</span>
+  <button class="btn btn-primary mt-5 mb-3" data-toggle="modal" data-target="#addcomp"><i class="far fa-plus-square"></i><span class="mx-3 h6">Company</span>
   </button>
 
   <!-- Modal -->

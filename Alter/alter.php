@@ -1,6 +1,26 @@
 <?php
   session_start();
   require('../config.php');
+
+  //Connect to the database
+  try {
+    $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
+    $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+  } catch (PDOException $e) {
+      echo "<div class='text-danger h6'>Echec connection</div>";
+  }
+
+  $contactname_selected=$company_selected="";
+
+  if(isset($_POST["search"])){
+    $contactname_selected=$_POST["contact_select"];
+
+    if(isset($_POST["company_select"])){
+      $company_selected=$_POST["company_select"];
+    }
+  }
+
+
 ?>
 
 
@@ -21,9 +41,27 @@
       include("navbaralter.php");
     ?>
 
-    <?php
-      include('alterform.php');
-     ?>
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col-sm-2 ml-2 border shadow shadow-regular text-center">
+          <?php
+            include('searchcontactform.php');
+          ?>
+        </div>
+        <div class="col">
+          <?php
+            include('../SQL/searchcontactquery.php');
+
+            if(isset($_POST["search"])){
+              include('contactformupdate.php');
+            }
+          ?>
+
+        </div>
+
+      </div>
+
+    </div>
 
 
 
