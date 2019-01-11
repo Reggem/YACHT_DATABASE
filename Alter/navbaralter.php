@@ -16,7 +16,7 @@
         <a class="nav-link" href="../Insert/insert.php">INSERT</a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="../Alter/alter.php">ALTER</a>
+        <a class="nav-link" href="../Alter/alter.php">UPDATE</a>
       </li>
 
     </ul>

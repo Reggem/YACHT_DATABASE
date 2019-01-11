@@ -29,13 +29,13 @@
             <div class="text-center">
 
               <a href="../select/select.php">
-                <button type="button" class="btn btn-primary">SELECT</button>
+                <button type="button" class="btn btn-primary m-2">SELECT</button>
               </a>
               <a href="../Insert/insert.php">
-                <button type="button" class="btn btn-primary">INSERT</button>
+                <button type="button" class="btn btn-primary m-2">INSERT</button>
               </a>
               <a href="../Alter/alter.php">
-                <button type="button" class="btn btn-primary">ALTER</button>
+                <button type="button" class="btn btn-primary m-2">UPDATE</button>
               </a>
             </div>
 
