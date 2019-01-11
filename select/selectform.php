@@ -2,8 +2,8 @@
 <?php
 
   // Get available Industries
-  $querytrainees="SELECT DISTINCT ToegevoegdDoor as Trainee
-  FROM contacts
+  $querytrainees="SELECT DISTINCT CONCAT_WS(' ',Voornaam, Naam) as Trainee
+  FROM trainees
   ORDER BY Trainee;";
 
   $sqltrainees=$connection->prepare($querytrainees);

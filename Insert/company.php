@@ -1,4 +1,7 @@
-<div class="col-md-2 col-sm-12 mb-3 pl-4 text-center" >
+<div class="col-md-2 col-sm-12 mb-3 ml-2 text-center border border rounded shadow shadow-regular" >
+  <div class="text-muted b text-justify mt-3">
+    Add a company to the database if you cannot find it in the list in the contact form.
+  </div>
   <button class="btn btn-primary mt-5 mb-3" data-toggle="modal" data-target="#addcomp"><i class="far fa-plus-square"></i><span class="mx-3 h6">Add a company</span>
   </button>
 

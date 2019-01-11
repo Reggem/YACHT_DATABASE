@@ -60,7 +60,7 @@ require('../config.php');
 
     <div class="container-fluid">
       <div class="row mt-3">
-        <div class="col-md-2" >
+        <div class="col-lg-2" >
 
           <!-- Form to select the fields we want to filter on -->
             <?php
@@ -147,7 +147,7 @@ require('../config.php');
                   }
 
              }else{
-               echo "<div class='text-center text-muted h1 align-middle'>NO QUERY</div>";
+               echo "<div class='text-center text-muted h1 align-middle' style='height:100%;'><span class='align-middle'>NO QUERY FORMED</span></div>";
              }
         ?>
         </div>

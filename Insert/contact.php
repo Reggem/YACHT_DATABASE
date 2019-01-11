@@ -12,7 +12,7 @@ try {
   $avCompanies=$sqlCompanies->fetchall();
 
   // Get available Trainees
-  $querytrainees="SELECT CONCAT_WS(' ',Voornaam, Naam) as Trainee
+  $querytrainees="SELECT DISTINCT CONCAT_WS(' ',Voornaam, Naam) as Trainee
   FROM trainees
   ORDER BY Trainee;";
 
@@ -28,8 +28,8 @@ try {
 
 
 
-<div class="col-md-10 col-sm-12" id=contactform>
-  <form method="post" class="container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+<div class="col-md-9 col-sm-12" id=contactform>
+  <form method="post" class="container mt-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
     <div class="h6">Insert contacts information</div>
     <div class="form-group mb-3">
@@ -106,7 +106,12 @@ try {
     </div>
 
     <!-- When clicked a modal opens -->
-    <button class="btn btn-secondary " type="submit" aria-pressed="true" name="inspectadd" data-toggle="modal" data-target="#QueryModal"><span class="mx-3 h6">Inspect query</span></button>
+    
+    <!-- <button class="btn btn-secondary " type="submit"  name="inspectadd" id="inspectqueryadd" data-toggle="modal" data-target="#myModal"><span class="mx-3 h6">Inspect query</span></button> -->
+
+
+
+
     <!--  wen clicked the query is executed-->
     <button class="btn btn-primary " type="submit" aria-pressed="true" name="contactsubmit"><span class="mx-3 h6">Add contact</span></button>
   </form>
