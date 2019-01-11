@@ -25,6 +25,7 @@
   // Get available Industries
   $queryindustries="SELECT DISTINCT  b.Industrie
   FROM bedrijven b
+  WHERE NOT b.Industrie='-'
   ORDER BY b.Industrie;";
 
   $sqlindustries=$connection->prepare($queryindustries);
