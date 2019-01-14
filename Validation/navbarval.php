@@ -14,10 +14,14 @@
 
 
     <!-- Login Button -->
-    <a href="../Login/login.php" class="ml-auto">
-      <button class="nav navbar btn btn-success ml-auto" id="loginbtn"><i class="fas fa-sign-in-alt"></i><span class="mx-2">Log In</span>
+
+      <button class="nav navbar btn btn-success ml-auto" id="loginbtnval" data-toggle="modal" data-target="#LoginModalVal"><i class="fas fa-sign-in-alt"></i><span class="mx-2">Log In</span>
       </button>
-    </a>
+
+      <?php
+        include("modalloginval.php");
+      ?>
+
 
 
 </nav>
