@@ -30,7 +30,8 @@ require('../config.php');
     $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
     $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
   } catch (PDOException $e) {
-      echo "<div class='text-danger h6'>Echec connection</div>";
+      header("Location: ../index.php");
+      exit;
   }
 
 

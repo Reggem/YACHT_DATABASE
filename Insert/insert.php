@@ -57,6 +57,20 @@
       return $data;
     }
 
+    // <!-- Connection to the database -->
+
+
+    try {
+      $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
+      $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+
+      // echo "succesful connection";
+
+    } catch (PDOException $e) {
+        header("Location: ../index.php");
+    }
+
+
 ?>
 
 
@@ -85,20 +99,6 @@
 
 
         <div class="row mt-5">
-
-              <!-- Connection to the database -->
-              <?php
-
-              try {
-                $connection=new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER,$_SESSION["code"]);
-                $connection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-
-                // echo "succesful connection";
-
-              } catch (PDOException $e) {
-                  echo "<div class='text-danger h6'>Echec connection</div>";
-              }
-              ?>
 
 
               <?php
