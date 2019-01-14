@@ -1,3 +1,42 @@
+<!-- Code that takes care of sending the email to the database administrator-->
+<?php
+  if(isset($_POST['email']) && isset($_POST['name']) && isset($_POST['fname'])){
+      $email=strip_tags($_POST['email']);
+      $name=strip_tags($_POST['name']);
+      $fname=strip_tags($_POST['fname']);
+      $to="regis.gemoets@yacht.nl";
+
+      $subject="Credentials request YACHT DB";
+      $body="<html>
+              <body>
+                <h2> Credential request </h2>
+                <hr>
+                <p> Name:<br>".$name." ".$fname."</p>
+                <p> Email: <br>".$email."</p>
+              </body>
+            </html>";
+
+      //headers
+      $headers ="From: ".$name." <".$email.">\r\n";
+      $headers .="Reply-To: ".$email."\r\n";
+      $headers .="MIME-version: 1.0\r\n";
+      $headers .="Content-type: text/html; charset-utf-8";
+
+      //Send
+      $send=mail($to, $subject,$body,$headers);
+
+      // //Thanks Message
+      // if($send){
+      //   echo "Thanks for contacting me. I'll do my best to check if you are eligible for credentials ASAP.";
+      // }else{
+      //   echo 'error';
+      // }
+  }
+
+  ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

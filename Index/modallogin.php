@@ -8,18 +8,20 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form class="" method="post" action="Hostingpage/hostingpage.php">
       <div class="modal-body">
-        <form class="" method="post" action="Hostingpage/hostingpage.php">
+
           <div class="form-group">
             <label for="user">User Code</label>
             <input type="password" name="code" class="form-control" placeholder="User Code" required>
           </div>
-        </form>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-success">Log In</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
