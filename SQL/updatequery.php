@@ -13,7 +13,7 @@ function test_input($data) {
 //UPDATE THE CONTACT
 
 //Collect the data of the contact
-$updcontName=$updcontFN=$updFun=$updEmail=$updTel=$updLinkedin=$updDepartment=$updTrainee=$updLocatie=$updCompany="";
+$updcontName=$updcontFN=$updFun=$updEmail=$updTel=$updLinkedin=$updDepartment=$updTrainee=$updLocatie=$updCompany=$updNote="";
 
 
 
@@ -28,10 +28,12 @@ if(isset($_POST["contactupdate"])){
   $updCompany=test_input($_POST["company"]);
   $updTrainee=test_input($_POST["trainee"]);
   $updLocatie=test_input($_POST["locatie"]);
+  $updNote=test_input($_POST["note"]);
 
 
   $queryupdate="UPDATE contacts c
-  SET Voornaam='$updcontFN' , Naam='$updcontName', Email='$updEmail', Telefoon='$updTel', Afdeling='$updDepartment' , Functie='$updFun', Locatie='$updLocatie', LinkedIn='$updLinkedin', ToegevoegdDoor='$updTrainee', Bedrijf_idBedrijf= (SELECT idCompany
+  SET Voornaam='$updcontFN' , Naam='$updcontName', Email='$updEmail', Telefoon='$updTel', Afdeling='$updDepartment' , Functie='$updFun', Locatie='$updLocatie', LinkedIn='$updLinkedin', ToegevoegdDoor='$updTrainee',
+  Note='$updNote', Bedrijf_idBedrijf= (SELECT idCompany
                       FROM bedrijven
                       WHERE Bedrijf='$updCompany')
   WHERE CONCAT_WS(' ',Voornaam, Naam)='$contact' ;";
