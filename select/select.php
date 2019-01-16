@@ -156,5 +156,6 @@ require('../config.php');
       <?php
         include("../jssheets.php");
       ?>
+      <script type="text/javascript" src="myJs.js"></script>
   </body>
 </html>

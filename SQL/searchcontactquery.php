@@ -31,7 +31,7 @@ if (isset($_POST["search"])){
 
 
 //Prepare request and query
-if(isset($_POST["search"])){
+if(isset($_POST["search"]) or isset($_POST["updatecontact"])){
 
   $sql=$connection->prepare($query);
   $sql->execute();

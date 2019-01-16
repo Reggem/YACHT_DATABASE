@@ -31,6 +31,11 @@
     include("../SQL/deletequery.php");
   }
 
+  //*******************************************************************
+  //Update coming from the click of the edit button in the select
+  if(isset($_POST["updatecontact"])){
+      $contactname_selected=$_POST["updatecontact"];
+  }
 
 
 ?>
@@ -64,7 +69,7 @@
           <?php
             include('../SQL/searchcontactquery.php');
 
-            if(isset($_POST["search"])){
+            if(isset($_POST["search"]) or isset($_POST["updatecontact"])){
               include('contactformupdate.php');
             }
           ?>
