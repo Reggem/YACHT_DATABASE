@@ -130,6 +130,10 @@ try {
       </div>
       <input type="text" class="form-control" value="<?php echo $result_array["LinkedIn"]; ?>" aria-label="LinkedIn URL" aria-describedby="basic-addon2"  name="linkedin">
     </div>
+    <div class="form-group mb-3">
+      <label for="trainee">Note</label>
+      <input type="textarea" class="form-control" placeholder="Note about the contact ant the status of the relationship " aria-label="Note"  name="note" value="<?php echo $result_array["Note"]; ?>">
+    </div>
 
 
     <!--  wen clicked the query is executed-->

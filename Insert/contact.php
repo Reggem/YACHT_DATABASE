@@ -104,9 +104,13 @@ try {
       </div>
       <input type="text" class="form-control" placeholder="LinkedIn URL" aria-label="LinkedIn URL" aria-describedby="basic-addon2"  name="linkedin">
     </div>
+    <div class="form-group mb-3">
+      <label for="trainee">Note</label>
+      <input type="textarea" class="form-control" placeholder="Note about the contact ant the status of the relationship " aria-label="Note"  name="note" >
+    </div>
 
     <!-- When clicked a modal opens -->
-    
+
     <!-- <button class="btn btn-secondary " type="submit"  name="inspectadd" id="inspectqueryadd" data-toggle="modal" data-target="#myModal"><span class="mx-3 h6">Inspect query</span></button> -->
 
 

@@ -5,7 +5,7 @@
   //Collect the data of the added company
   $addcompName=$addindus=$addnbrEmp=$addcity="";
   //Collect the data of the contact
-  $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie="";
+  $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie=$addNote="";
   $bedrijf="";
 
 
@@ -30,6 +30,7 @@
       $bedrijf=test_input($_POST['bedrijf']);
       $addTrainee=test_input($_POST["trainee"]);
       $addLocatie=test_input($_POST["locatie"]);
+      $addNote=test_input($_POST["note"]);
     }
 
     if(isset($_POST["inspectadd"])){
@@ -43,6 +44,7 @@
       $bedrijf=test_input($_POST['bedrijf']);
       $addTrainee=test_input($_POST["trainee"]);
       $addLocatie=test_input($_POST["locatie"]);
+      $addNote=test_input($_POST["note"]);
     }
 
   }
@@ -148,12 +150,12 @@
 
 
                 // Format for the query
-                $tab=array($addcontName, $addcontFN, $addEmail,$addTel,$addFun,$addDepartment, $addTrainee, $addLocatie);
+                $tab=array($addcontName, $addcontFN, $addEmail,$addTel,$addFun,$addDepartment, $addTrainee, $addLocatie, $addNote);
                 $new_tab="'".implode("', '", $tab)."'";
 
 
                 // if(isset())
-                $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Bedrijf_idBedrijf)
+                $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Note, Bedrijf_idBedrijf)
                  SELECT $new_tab, idCompany FROM bedrijven WHERE Bedrijf='$bedrijf';";
 
 
@@ -174,17 +176,9 @@
 
 
 
-      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-     <!-- <script type="text/javascript">
-          $('#inspectqueryadd').on('click', function(e){
-          $('#myModal').modal('show');
-          e.preventDefault();
-          });
-
-     </script> -->
-
+      <?php
+        include("../jssheets.php");
+      ?>
   </body>
 
 </html>
