@@ -5,7 +5,7 @@
   //Collect the data of the added company
   $addcompName=$addindus=$addnbrEmp=$addcity="";
   //Collect the data of the contact
-  $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie=$addNote="";
+  $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie=$addNote=$addStatus="";
   $bedrijf="";
 
 
@@ -31,6 +31,7 @@
       $addTrainee=test_input($_POST["trainee"]);
       $addLocatie=test_input($_POST["locatie"]);
       $addNote=test_input($_POST["note"]);
+      $addStatus=test_input($_POST["status"]);
     }
 
     if(isset($_POST["inspectadd"])){
@@ -45,6 +46,7 @@
       $addTrainee=test_input($_POST["trainee"]);
       $addLocatie=test_input($_POST["locatie"]);
       $addNote=test_input($_POST["note"]);
+      $addStatus=test_input($_POST["status"]);
     }
 
   }
@@ -150,12 +152,12 @@
 
 
                 // Format for the query
-                $tab=array($addcontName, $addcontFN, $addEmail,$addTel,$addFun,$addDepartment, $addTrainee, $addLocatie, $addNote);
+                $tab=array($addcontName, $addcontFN, $addEmail,$addTel,$addFun,$addDepartment, $addTrainee, $addLocatie, $addNote, $addStatus);
                 $new_tab="'".implode("', '", $tab)."'";
 
 
                 // if(isset())
-                $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Note, Bedrijf_idBedrijf)
+                $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Note,Status, Bedrijf_idBedrijf)
                  SELECT $new_tab, idCompany FROM bedrijven WHERE Bedrijf='$bedrijf';";
 
 

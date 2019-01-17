@@ -188,3 +188,27 @@ $('#department_check').on('click',function(){
   $(this).toggleClass("btn-secondary");
   $(this).toggleClass("btn-outline-secondary");
 })
+
+//Status
+$('#status_check').on('click',function(){
+  // if the objet is already in the DOM --> remove
+  if($('#statusfilterid').length){
+    $('#statusfilterid').detach();
+    if($('#filtersform div').length!=0){
+      $('#filtersform').append(querybtn);
+    }else{
+      $('#querybtn').detach();
+    }
+  }else{
+    $('#filtersform').prepend(status_filter);
+    if($('#filtersform div').length!=0){
+      $('#filtersform').append(querybtn);
+    }else{
+      $('#querybtn').detach();
+    }
+  }
+
+  //toggle its background class
+  $(this).toggleClass("btn-secondary");
+  $(this).toggleClass("btn-outline-secondary");
+})

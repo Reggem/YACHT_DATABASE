@@ -10,6 +10,7 @@
             <button type="button" name="industry_check" class="btn btn-outline-secondary  " id="industry_check">Industrie</button>
             <button type="button" name="department_check" class="btn btn-outline-secondary  " id="department_check">Afdeling</button>
             <button type="button" name="function_check" class="btn btn-outline-secondary  " id="function_check">Functie</button>
+            <button type="button" name="status_check" class="btn btn-outline-secondary  " id="status_check">Status</button>
           </div>
       </div>
     <!-- </div> -->

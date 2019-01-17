@@ -108,6 +108,18 @@ try {
       <label for="trainee">Note</label>
       <input type="textarea" class="form-control" placeholder="Note about the contact ant the status of the relationship " aria-label="Note"  name="note" >
     </div>
+    <div class="form-group mb-3">
+      <label for="trainee">Status</label>
+      <select  name="status" class="form-control">
+        <option value="" selected></option>
+        <option value="Gemaild">Gemaild</option>
+        <option value="Gebeld">Gebeld</option>
+        <option value="Gemaild">Afspraak</option>
+        <option value="Geen interesse">Geen interesse</option>
+        <option value="Geen interesse trainee">Geen interesse trainee</option>
+        <option value="On Hold">On Hold</option>
+      </select>
+    </div>
 
     <!-- When clicked a modal opens -->
 

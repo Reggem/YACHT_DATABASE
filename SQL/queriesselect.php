@@ -4,7 +4,7 @@
 <?php
 
 
-$query = "SELECT DISTINCT b.Bedrijf, c.Locatie, CONCAT_WS(' ',c.Voornaam,c.Naam) as Naam, c.Functie,c.Telefoon, c.Email, c.Afdeling FROM contacts c
+$query = "SELECT DISTINCT b.Bedrijf, c.Locatie, CONCAT_WS(' ',c.Voornaam,c.Naam) as Naam, c.Functie,c.Telefoon, c.Email, c.Status FROM contacts c
 LEFT JOIN bedrijven b on b.idCompany=c.Bedrijf_idBedrijf
 WHERE 1=1 ";
 

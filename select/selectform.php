@@ -58,16 +58,16 @@
   $avDepartments=$sqldepartments->fetchall();
 
 
-    // Get available functions
-    $queryFunctions="SELECT DISTINCT c.Functie
-    FROM contacts c
-    WHERE NOT c.Functie=''
-    ORDER BY c.Functie;";
+  // Get available functions
+  $queryFunctions="SELECT DISTINCT c.Functie
+  FROM contacts c
+  WHERE NOT c.Functie=''
+  ORDER BY c.Functie;";
 
-    $sqlfunctions=$connection->prepare($queryFunctions);
-    $sqlfunctions->execute();
+  $sqlfunctions=$connection->prepare($queryFunctions);
+  $sqlfunctions->execute();
 
-    $avFunctions=$sqlfunctions->fetchall();
+  $avFunctions=$sqlfunctions->fetchall();
 
 ?>
 
@@ -156,6 +156,20 @@
                     echo '<option value="'.$avFunctions[$i]["Functie"] .'">'.$avFunctions[$i]["Functie"].'</option>';
                   }
                  ?>
+              </select>
+            </div>
+
+            <div class="form-group detach" id="statusfilterid">
+              <!-- STATUS -->
+              <label for="status_select">Status</label>
+              <select class="form-control custom-select" placeholder="Select status" name="status_select[]" size="3" multiple>
+                <option value="" selected="selected">-</option>
+                <option value="Gemaild">Gemaild</option>
+                <option value="Gebeld">Gebeld</option>
+                <option value="Geen interesse">Geen interesse</option>
+                <option value="Geen interesse trainee">Geen interesse trainee</option>
+                <option value="On Hold">On Hold</option>
+
               </select>
             </div>
 
