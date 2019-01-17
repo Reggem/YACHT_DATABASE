@@ -57,12 +57,25 @@
 
   $avDepartments=$sqldepartments->fetchall();
 
+
+    // Get available functions
+    $queryFunctions="SELECT DISTINCT c.Functie
+    FROM contacts c
+    WHERE NOT c.Functie=''
+    ORDER BY c.Functie;";
+
+    $sqlfunctions=$connection->prepare($queryFunctions);
+    $sqlfunctions->execute();
+
+    $avFunctions=$sqlfunctions->fetchall();
+
 ?>
 
 
-      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="sticky-top" style="top:80px; "   >
 
-            <div class="form-group">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="sticky-top" id="filtersform" style="top:80px;"   >
+
+            <div class="form-group detach" id="trfilterid">
               <!-- Trainees -->
               <label for="industry_select">Trainee</label>
               <select class="form-control custom-select" placeholder="Select a trainee" name="trainee_select[]"  size="3" multiple>
@@ -76,7 +89,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group detach" id="indfilterid">
               <!-- Industry -->
               <label for="industry_select">Industry</label>
               <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" size="3" multiple>
@@ -90,7 +103,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group detach" id="compfilterid">
               <!-- Company -->
               <label for="company_select">Company</label>
               <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" size="3" multiple>
@@ -104,7 +117,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group detach" id="cityfilterid">
               <!-- Cities -->
               <label for="city_select">City</label>
               <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" size="3" multiple>
@@ -118,7 +131,7 @@
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group detach" id="depfilterid">
               <!-- Deparmtents -->
               <label for="department_select">Department</label>
               <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" size="3" multiple>
@@ -132,7 +145,22 @@
             </div>
 
 
+
+            <div class="form-group detach" id="funfilterid">
+              <!-- FUNCTION -->
+              <label for="function_select">Function</label>
+              <select class="form-control custom-select" placeholder="Select functions" name="function_select[]" size="3" multiple>
+                <option value="" selected="selected">-</option>
+                <?php
+                  for($i=0;$i<count($avFnctions);$i++){
+                    echo '<option value="'.$avFunctions[$i]["Functie"] .'">'.$avFunctions[$i]["Functie"].'</option>';
+                  }
+                 ?>
+              </select>
+            </div>
+
+
             <!-- <button type="submit" class="btn btn-secondary h6" name="inspect">Inspect</button> -->
-            <button type="submit" class="btn btn-primary h6" name="query">Query</button>
+            <button type="submit" class="btn btn-primary h6" name="query" id="querybtn">Query</button>
 
       </form>

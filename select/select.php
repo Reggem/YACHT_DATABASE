@@ -7,14 +7,33 @@ require('../config.php');
 
 
   $companies=$industries=$cities=$departments=$trainees="";
+  // echo "<pre>";
+  // print_r($_POST);
+  // echo "</pre>";
 
   if (isset($_POST["query"]) or isset($_POST["inspect"]) ) {
+
+    if(isset($_POST["trainee_select"])){
       $trainees=$_POST["trainee_select"];
-      $industries = $_POST["industry_select"];
-      $companies = $_POST["company_select"];
-      $cities = $_POST["city_select"];
-      $departments = $_POST["department_select"];
+      $intrainees= @implode("', '", $trainees);
     }
+    if(isset($_POST["industry_select"])){
+      $industries = $_POST["industry_select"];
+      $inindustries = @implode("', '", $industries);
+    }
+    if(isset($_POST["company_select"])){
+      $companies = $_POST["company_select"];
+      $incompanies = @implode("', '", $companies);
+    }
+    if(isset($_POST["city_select"])){
+      $cities = $_POST["city_select"];
+      $incities = @implode("', '", $cities);
+    }
+    if(isset($_POST["department_select"])){
+      $departments = $_POST["department_select"];
+      $indepartments = @implode("', '", $departments);
+    }
+  }
 
 
 
@@ -60,7 +79,12 @@ require('../config.php');
     ?>
 
     <div class="container-fluid">
-      <div class="row mt-3">
+      <div class="row mt-3 d-flex">
+        <?php include("filterscheckboxes.php"); ?>
+        <button class="btn btn-outline-success justify-content-end mr-4 mb-3 border" id="downloadbtn"><i class="fas fa-download s-2x"></i>
+        </button>
+      </div>
+      <div class="row">
         <div class="col-lg-2" >
 
           <!-- Form to select the fields we want to filter on -->
@@ -70,12 +94,6 @@ require('../config.php');
 
 
             <?php
-              $incities = @implode("', '", $cities);
-              $inindustries = @implode("', '", $industries);
-              $incompanies = @implode("', '", $companies);
-              $indepartments = @implode("', '", $departments);
-              $intrainees= @implode("', '", $trainees);
-
               //Include the queries
               include("../SQL/queriesselect.php");
             ?>
@@ -152,6 +170,8 @@ require('../config.php');
              }
         ?>
         </div>
+      </div>
+    </div>
 
       <?php
         include("../jssheets.php");
