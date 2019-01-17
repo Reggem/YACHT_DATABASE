@@ -4,9 +4,9 @@
 
       <div id="filters" class="mt-0 mb-2 collapse text-justify">
           <div class="btn-group ml-2" role="group">
-            <button type="button" name="company_check" class="btn btn-outline-secondary " id="company_check" >Bedrijf</button><br>
+            <button type="button" name="company_check" class="btn btn-secondary " id="company_check" >Bedrijf</button><br>
             <button type="button" name="city_check" class="btn btn-outline-secondary " id="city_check">Stad</button>
-            <button type="button" name="trainee_check" class="btn btn-outline-secondary  " id="trainee_check">Toegevoegd Door</button>
+            <button type="button" name="trainee_check" class="btn btn-secondary  " id="trainee_check">Toegevoegd Door</button>
             <button type="button" name="industry_check" class="btn btn-outline-secondary  " id="industry_check">Industrie</button>
             <button type="button" name="department_check" class="btn btn-outline-secondary  " id="department_check">Afdeling</button>
             <button type="button" name="function_check" class="btn btn-outline-secondary  " id="function_check">Functie</button>

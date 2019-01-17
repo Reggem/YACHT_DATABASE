@@ -30,13 +30,13 @@ $('tr td:nth-child(3)').on('mouseleave', function(){
 
 //We want to detach all the filters in the form and ad them back when a button is clicked
 
-var trainee_filter=$('#trfilterid').detach();
-var company_filter=$('#compfilterid').detach();
+var trainee_filter=$('#trfilterid');
+var company_filter=$('#compfilterid');
 var industry_filter=$('#indfilterid').detach();
 var department_filter=$('#depfilterid').detach();
 var function_filter=$('#funfilterid').detach();
 var city_filter=$('#cityfilterid').detach();
-var querybtn=$('#querybtn').detach();
+var querybtn=$('#querybtn');
 // var trainee_filter=$('#trfilterid').detach();
 
 
