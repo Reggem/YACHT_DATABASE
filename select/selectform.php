@@ -152,7 +152,7 @@
               <select class="form-control custom-select" placeholder="Select functions" name="function_select[]" size="3" multiple>
                 <option value="" selected="selected">-</option>
                 <?php
-                  for($i=0;$i<count($avFnctions);$i++){
+                  for($i=0;$i<count($avFunctions);$i++){
                     echo '<option value="'.$avFunctions[$i]["Functie"] .'">'.$avFunctions[$i]["Functie"].'</option>';
                   }
                  ?>
@@ -163,9 +163,9 @@
               <!-- STATUS -->
               <label for="status_select">Status</label>
               <select class="form-control custom-select" placeholder="Select status" name="status_select[]" size="3" multiple>
-                <option value="" selected="selected">-</option>
                 <option value="Gemaild">Gemaild</option>
                 <option value="Gebeld">Gebeld</option>
+                <option value="Afspraak">Afspraak</option>
                 <option value="Geen interesse">Geen interesse</option>
                 <option value="Geen interesse trainee">Geen interesse trainee</option>
                 <option value="On Hold">On Hold</option>

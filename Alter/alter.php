@@ -24,6 +24,7 @@
   //Update the contact if we have clicked the update button
   if(isset($_POST["contactupdate"])){
 
+
     include("../SQL/updatequery.php");
   }
 

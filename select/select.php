@@ -6,7 +6,7 @@ require('../config.php');
 // <!-- Define variables and clean function  -->
 
 
-  $companies=$industries=$cities=$departments=$trainees="";
+  $companies=$industries=$cities=$departments=$trainees=$status="";
   // echo "<pre>";
   // print_r($_POST);
   // echo "</pre>";
@@ -32,6 +32,14 @@ require('../config.php');
     if(isset($_POST["department_select"])){
       $departments = $_POST["department_select"];
       $indepartments = @implode("', '", $departments);
+    }
+    if(isset($_POST["status_select"])){
+      $status = $_POST["status_select"];
+      $instatus = @implode("', '", $status);
+    }
+    if(isset($_POST["function_select"])){
+      $functie = $_POST["function_select"];
+      $infuncties = @implode("', '", $functie);
     }
   }
 
@@ -119,7 +127,7 @@ require('../config.php');
 
                         // style='border: solid 1px black;'
                          echo "<div class='table-responsive'><table class='table table-hover'>";
-                         echo "<thead class='thead-light'><tr><th scope='col'>Company</th><th scope='col'>City</th><th scope='col'>Name</th><th scope='col'>Function</th><th scope='col'>Telephone</th><th scope='col'>Email</th><th scope='col'>Department</th></thead><tbody>";
+                         echo "<thead class='thead-light'><tr><th scope='col'>Company</th><th scope='col'>City</th><th scope='col'>Name</th><th scope='col'>Function</th><th scope='col'>Telephone</th><th scope='col'>Email</th><th scope='col'>Status</th></thead><tbody>";
 
                          class TableRows extends RecursiveIteratorIterator {
                            function __construct($it) {

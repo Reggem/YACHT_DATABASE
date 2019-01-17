@@ -131,18 +131,18 @@ try {
       <input type="text" class="form-control" value="<?php echo $result_array["LinkedIn"]; ?>" aria-label="LinkedIn URL" aria-describedby="basic-addon2"  name="linkedin">
     </div>
     <div class="form-group mb-3">
-      <label for="trainee">Note</label>
+      <label for="note">Note</label>
       <input type="textarea" class="form-control" placeholder="Note about the contact ant the status of the relationship " aria-label="Note"  name="note" value="<?php echo $result_array["Note"]; ?>">
     </div>
     <div class="form-group mb-3">
-      <label for="trainee">Status</label>
+      <label for="status">Status</label>
       <select  name="status" class="form-control">
-        <option value="<?php echo $result_array["Status"]; ?>" selected>
+        <option value="<?php echo $result_array["Status"]; ?>" style="visibility:hidden;"  selected>
           <?php echo $result_array["Status"]; ?>
         </option>
         <option value="Gemaild">Gemaild</option>
         <option value="Gebeld">Gebeld</option>
-        <option value="Gemaild">Afspraak</option>
+        <option value="Afspraak">Afspraak</option>
         <option value="Geen interesse">Geen interesse</option>
         <option value="Geen interesse trainee">Geen interesse trainee</option>
         <option value="On Hold">On Hold</option>

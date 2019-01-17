@@ -36,6 +36,7 @@ var industry_filter=$('#indfilterid').detach();
 var department_filter=$('#depfilterid').detach();
 var function_filter=$('#funfilterid').detach();
 var city_filter=$('#cityfilterid').detach();
+var status_filter=$('#statusfilterid').detach();
 var querybtn=$('#querybtn');
 // var trainee_filter=$('#trfilterid').detach();
 
@@ -189,7 +190,7 @@ $('#department_check').on('click',function(){
   $(this).toggleClass("btn-outline-secondary");
 })
 
-//Status
+//STATUS
 $('#status_check').on('click',function(){
   // if the objet is already in the DOM --> remove
   if($('#statusfilterid').length){
