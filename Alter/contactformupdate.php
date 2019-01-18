@@ -51,7 +51,7 @@ try {
 <div class="col-md-9 col-sm-12" id=contactform>
   <form method="post" class="container mt-3" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 
-    <div class="h6">Contact form of : <?php echo "<b>".$contactname_selected."</b>"; ?></div>
+    <div class="h6">Contact form of : <?php echo "<b>".$_SESSION["contactname_selected"]."</b>"; ?></div>
     <div class="form-group mb-3">
         <label for="trainee">Added by</label>
         <select name="trainee" class="form-control" placeholder="Toegevoegd door" required>

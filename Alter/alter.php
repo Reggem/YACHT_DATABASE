@@ -16,7 +16,7 @@
   if(isset($_POST["search"])){
       $_SESSION["contactname_selected"]=$_POST["contact_select"];
       // print_r($_SESSION);
-      
+
     // if(isset($_POST["company_select"])){
     //   $company_selected=$_POST["company_select"];
     // }
@@ -38,7 +38,7 @@
   //*******************************************************************
   //Update coming from the click of the edit button in the select
   if(isset($_POST["updatecontact"])){
-      $contactname_selected=$_POST["updatecontact"];
+      $_SESSION["contactname_selected"]=$_POST["updatecontact"];
   }
 
 
