@@ -12,15 +12,15 @@
 
   $avContacts=$sqlcontacts->fetchall();
 
-  // Get available Companies
-  $querycompanies="SELECT DISTINCT  b.Bedrijf
-  FROM bedrijven b
-  ORDER BY b.Bedrijf;";
-
-  $sqlCompanies=$connection->prepare($querycompanies);
-  $sqlCompanies->execute();
-
-  $avCompanies=$sqlCompanies->fetchall();
+  // // Get available Companies
+  // $querycompanies="SELECT DISTINCT  b.Bedrijf
+  // FROM bedrijven b
+  // ORDER BY b.Bedrijf;";
+  //
+  // $sqlCompanies=$connection->prepare($querycompanies);
+  // $sqlCompanies->execute();
+  //
+  // $avCompanies=$sqlCompanies->fetchall();
 
 ?>
 

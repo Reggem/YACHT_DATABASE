@@ -5,7 +5,7 @@
 //We look for all info on our contact
 $query="SELECT DISTINCT  *
 FROM contacts c
-WHERE CONCAT_WS(' ',c.Voornaam,c.Naam)='$contactname_selected' ";
+WHERE CONCAT_WS(' ',c.Voornaam,c.Naam)='$_SESSION[contactname_selected]' ";
 
 
 if (isset($_POST["search"])){

@@ -95,13 +95,13 @@ try {
     <div class="form-row">
       <div class="col">
         <div class="form-group mb-3">
-            <label for="trainee">Function</label>
+          <label for="trainee">Function</label>
           <input type="text" class="form-control" value="<?php echo $result_array["Functie"]; ?>" aria-label="Functie" aria-describedby="basic-addon2"  name="functie">
         </div>
       </div>
       <div class="col">
         <div class="form-group mb-3">
-            <label for="trainee">Department</label>
+          <label for="trainee">Department</label>
           <input type="text" class="form-control" value="<?php echo $result_array["Afdeling"]; ?>" aria-label="Afdeling" aria-describedby="basic-addon2"  name="department">
         </div>
       </div>

@@ -14,8 +14,9 @@
   $contactname_selected=$company_selected="";
 
   if(isset($_POST["search"])){
-      $contactname_selected=$_POST["contact_select"];
-
+      $_SESSION["contactname_selected"]=$_POST["contact_select"];
+      // print_r($_SESSION);
+      
     // if(isset($_POST["company_select"])){
     //   $company_selected=$_POST["company_select"];
     // }
@@ -23,7 +24,9 @@
 
   //Update the contact if we have clicked the update button
   if(isset($_POST["contactupdate"])){
-
+    // echo "<pre>";
+    // print_r($_SESSION);
+    // echo "</pre>";
 
     include("../SQL/updatequery.php");
   }
