@@ -118,6 +118,8 @@ try {
         <option value="Geen interesse">Geen interesse</option>
         <option value="Geen interesse trainee">Geen interesse trainee</option>
         <option value="On Hold">On Hold</option>
+        <option value="Moet Bellen">Moet Bellen</option>
+        <option value="Reminder Sturen">Reminder Sturen</option>
       </select>
     </div>
 
