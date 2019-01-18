@@ -95,7 +95,7 @@ require('../config.php');
       <div class="row pt-3 mb-3 d-flex bg-dark">
         <?php include("filterscheckboxes.php"); ?>
 
-        <button class="btn btn-outline-success justify-content-end mr-4 mb-3 border" id="downloadbtn"><i class="fas fa-download s-2x"></i>
+        <button class="btn btn-outline-success justify-content-end mr-4 mb-3 border" id="downloadbtn" onclick="exportTableToCSV('contacts.csv')"><i class="fas fa-download s-2x"></i>
         </button>
       </div>
       <div class="row">
@@ -191,5 +191,6 @@ require('../config.php');
         include("../jssheets.php");
       ?>
       <script type="text/javascript" src="js.js"></script>
+      <script type="text/javascript" src="download.js"></script>
   </body>
 </html>
