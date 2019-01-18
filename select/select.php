@@ -94,11 +94,12 @@ require('../config.php');
     <div class="container-fluid">
       <div class="row mt-3 d-flex">
         <?php include("filterscheckboxes.php"); ?>
+
         <button class="btn btn-outline-success justify-content-end mr-4 mb-3 border" id="downloadbtn"><i class="fas fa-download s-2x"></i>
         </button>
       </div>
       <div class="row">
-        <div class="col-lg-2" >
+        <div class="col-lg-2 collapse show" id="selectformcol">
 
           <!-- Form to select the fields we want to filter on -->
             <?php

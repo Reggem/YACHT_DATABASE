@@ -31,6 +31,7 @@ $('tr td:nth-child(3)').on('mouseleave', function(){
 });
 
 
+
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //We want to detach all the filters in the form and ad them back when a button is clicked
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -244,4 +245,14 @@ $('#status_check').on('click',function(){
   //toggle its background class
   $(this).toggleClass("btn-secondary");
   $(this).toggleClass("btn-outline-secondary");
+})
+
+
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//Change the symbol on the button when clicked to hide and show the filters
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+$('#hidefilters').on('click',function(){
+  $('#hidefilters i').toggleClass("fa-caret-up");
+  $('#hidefilters i').toggleClass("fa-caret-down");
 })
