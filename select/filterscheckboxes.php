@@ -1,8 +1,8 @@
 <div class="container ml-0 d-flex">
     <!-- <div class="col "> -->
-      <button type="button" data-toggle="collapse" data-target="#selectformcol" aria-expanded="true" class="btn btn-secondary btn-sm mb-3 mx-2 floar-ri" id="hidefilters"><i class="fas fa-caret-up"></i></button>
+      <button type="button" data-toggle="collapse" data-target="#selectformcol" class="btn btn-secondary btn-sm mb-3 mx-2 floar-ri" id="hidefilters"><i class="fas fa-caret-up"></i></button>
 
-      <button type="button" data-toggle="collapse" data-target="#filters" name="button" aria-expanded="false" class="btn btn-warning mb-3 float-ri" id="filterbtn"> Filters </button>
+      <button type="button" data-toggle="collapse" data-target="#filters" name="button" aria-expanded="false" class="btn btn-warning mb-3 float-ri" id="filterbtn"><i class="fas fa-filter"></i> </button>
 
       <div id="filters" class="mt-0 mb-2 collapse text-justify">
           <div class="btn-group ml-2" role="group">

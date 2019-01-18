@@ -92,7 +92,7 @@ require('../config.php');
     ?>
 
     <div class="container-fluid">
-      <div class="row mt-3 d-flex">
+      <div class="row pt-3 mb-3 d-flex bg-dark">
         <?php include("filterscheckboxes.php"); ?>
 
         <button class="btn btn-outline-success justify-content-end mr-4 mb-3 border" id="downloadbtn"><i class="fas fa-download s-2x"></i>
