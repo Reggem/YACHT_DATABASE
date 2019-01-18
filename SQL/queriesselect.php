@@ -11,8 +11,10 @@ WHERE 1=1 ";
 
 if (isset($_POST['query'])){
 
-        $addstring1 = $addstring2 = $addstring3 = $addstring4 =$addstring5 = $addstring6=$addstring7= $and1 = $and2 = $and3 = $and4 = $and5 =$and6= $and7="";
-        $andcnt =7 ;
+        $addstring1 = $addstring2 = $addstring3 = $addstring4 =$addstring5 = $addstring6=$addstring7= $addstring8=$and1 = $and2 = $and3 = $and4 = $and5 =$and6= $and7=$and8="";
+        $andcnt =8 ;
+
+
 
         if(!empty($departments[0])){
           $addstring1 = " c.Afdeling IN ('$indepartments') ";
@@ -42,13 +44,19 @@ if (isset($_POST['query'])){
           $addstring7 = " c.Functie IN ('$infuncties') ";
         }
 
+        if(!empty($contact[0])){
+          $addstring8 = " CONCAT_WS(' ',c.Voornaam,c.Naam) IN ('$incontacts') ";
+        }
+
         //Assign the ands
         for($i=1;$i<=$andcnt;$i++){
           ${"and".$i} =  ${"addstring".$i} != '' ? " AND" : "";
         }
 
-        $query .= $and1.$addstring1.$and2.$addstring2.$and3.$addstring3.$and4.$addstring4.$and5.$addstring5.$and6.$addstring6.$and7.$addstring7;
 
+        $query .= $and1.$addstring1.$and2.$addstring2.$and3.$addstring3.$and4.$addstring4.$and5.$addstring5.$and6.$addstring6.$and7.$addstring7.$and8.$addstring8;
+
+        // echo $query;
 }
 
 // if (isset($_POST['inspect'])){
@@ -88,7 +96,7 @@ if (isset($_POST['query'])){
 
 //If notheing is selected we display the message that the user should select in the filter list
 
-if(empty($companies[0]) and empty($trainees[0]) and empty($cities[0]) and empty($departments[0]) and empty($industries[0]) and empty($infuncties[0]) and empty($instatus[0])){
+if(empty($companies[0]) and empty($trainees[0]) and empty($cities[0]) and empty($departments[0]) and empty($industries[0]) and empty($infuncties[0]) and empty($instatus[0]) and empty($incontacts[0])){
 
   $query="No query formed!";
 }

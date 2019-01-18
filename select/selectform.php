@@ -1,6 +1,16 @@
 
 <?php
 
+  // Get available contacts
+  $querycontacts="SELECT DISTINCT CONCAT_WS(' ',Voornaam, Naam) as Contact
+  FROM contacts
+  ORDER BY Contact;";
+
+  $sqlcontacts=$connection->prepare($querycontacts);
+  $sqlcontacts->execute();
+
+  $avContacts=$sqlcontacts->fetchall();
+
   // Get available Industries
   $querytrainees="SELECT DISTINCT CONCAT_WS(' ',Voornaam, Naam) as Trainee
   FROM trainees
@@ -75,11 +85,25 @@
 
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post" class="sticky-top" id="filtersform" style="top:80px;"   >
 
+
+            <div class="form-group detach" id="contactfilterid">
+              <!--CONTACTS-->
+              <label for="contact_select">Contacts</label>
+              <select class="form-control custom-select" placeholder="Select contacts" name="contact_select[]"  size="3" multiple>
+                <!-- <option value="" selected="selected">-</option> -->
+                <?php
+                  for($i=0;$i<count($avContacts);$i++){
+                    echo '<option value="'.$avContacts[$i]["Contact"] .'">'.$avContacts[$i]["Contact"].'</option>';
+                  }
+                ?>
+              </select>
+            </div>
+
             <div class="form-group detach" id="trfilterid">
               <!-- Trainees -->
               <label for="industry_select">Trainee</label>
               <select class="form-control custom-select" placeholder="Select a trainee" name="trainee_select[]"  size="3" multiple>
-                <option value="" selected="selected">-</option>
+                <!-- <option value="" selected="selected">-</option> -->
                 <?php
                   for($i=0;$i<count($avTrainees);$i++){
                     echo '<option value="'.$avTrainees[$i]["Trainee"] .'">'.$avTrainees[$i]["Trainee"].'</option>';
@@ -93,7 +117,7 @@
               <!-- Industry -->
               <label for="industry_select">Industry</label>
               <select class="form-control custom-select" placeholder="Select Industries" name="industry_select[]" size="3" multiple>
-                <option value="" selected="selected">-</option>
+                <!-- <option value="" selected="selected">-</option> -->
                 <?php
                   for($i=0;$i<count($avIndustries);$i++){
                     echo '<option value="'.$avIndustries[$i]["Industrie"] .'">'.$avIndustries[$i]["Industrie"].'</option>';
@@ -107,7 +131,7 @@
               <!-- Company -->
               <label for="company_select">Company</label>
               <select class="form-control custom-select" placeholder="Select Companies" name="company_select[]" size="3" multiple>
-                <option value="" selected="selected">-</option>
+                <!-- <option value="" selected="selected">-</option> -->
                 <?php
                   for($i=0;$i<count($avCompanies);$i++){
                     echo '<option value="'.$avCompanies[$i]["Bedrijf"].'">'.$avCompanies[$i]["Bedrijf"].'</option>';
@@ -121,7 +145,7 @@
               <!-- Cities -->
               <label for="city_select">City</label>
               <select class="form-control custom-select" placeholder="Select Cities" name="city_select[]" size="3" multiple>
-                <option value="" selected="selected">-</option>
+                <!-- <option value="" selected="selected">-</option> -->
                 <?php
                   for($i=0;$i<count($avCities);$i++){
                       echo '<option value="'.$avCities[$i]["Locatie"] .'">'.$avCities[$i]["Locatie"].'</option>';
@@ -135,7 +159,7 @@
               <!-- Deparmtents -->
               <label for="department_select">Department</label>
               <select class="form-control custom-select" placeholder="Select Deparmtents" name="department_select[]" size="3" multiple>
-                <option value="" selected="selected">-</option>
+                <!-- <option value="" selected="selected">-</option> -->
                 <?php
                   for($i=0;$i<count($avDepartments);$i++){
                     echo '<option value="'.$avDepartments[$i]["Afdeling"] .'">'.$avDepartments[$i]["Afdeling"].'</option>';
@@ -150,7 +174,7 @@
               <!-- FUNCTION -->
               <label for="function_select">Function</label>
               <select class="form-control custom-select" placeholder="Select functions" name="function_select[]" size="3" multiple>
-                <option value="" selected="selected">-</option>
+                <!-- <option value="" selected="selected">-</option> -->
                 <?php
                   for($i=0;$i<count($avFunctions);$i++){
                     echo '<option value="'.$avFunctions[$i]["Functie"] .'">'.$avFunctions[$i]["Functie"].'</option>';
@@ -171,8 +195,6 @@
                 <option value="On Hold">On Hold</option>
                 <option value="Moet Bellen">Moet Bellen</option>
                 <option value="Reminder Sturen">Reminder Sturen</option>
-
-
               </select>
             </div>
 

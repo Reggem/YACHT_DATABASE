@@ -6,7 +6,7 @@ require('../config.php');
 // <!-- Define variables and clean function  -->
 
 
-  $companies=$industries=$cities=$departments=$trainees=$status="";
+  $companies=$industries=$cities=$departments=$trainees=$status=$contact="";
   // echo "<pre>";
   // print_r($_POST);
   // echo "</pre>";
@@ -40,6 +40,11 @@ require('../config.php');
     if(isset($_POST["function_select"])){
       $functie = $_POST["function_select"];
       $infuncties = @implode("', '", $functie);
+    }
+
+    if(isset($_POST["contact_select"])){
+      $contact = $_POST["contact_select"];
+      $incontacts = @implode("', '", $contact);
     }
   }
 

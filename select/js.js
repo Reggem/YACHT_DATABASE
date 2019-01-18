@@ -1,3 +1,7 @@
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+//When we over on the table cell --> toggle edit mode
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 $('tr td:nth-child(3)').on('mouseenter', function(){
 
     // Change the name to a button
@@ -27,11 +31,15 @@ $('tr td:nth-child(3)').on('mouseleave', function(){
 });
 
 
-
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 //We want to detach all the filters in the form and ad them back when a button is clicked
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+
 
 var trainee_filter=$('#trfilterid');
 var company_filter=$('#compfilterid');
+var contact_filter=$('#contactfilterid');
 var industry_filter=$('#indfilterid').detach();
 var department_filter=$('#depfilterid').detach();
 var function_filter=$('#funfilterid').detach();
@@ -43,6 +51,30 @@ var querybtn=$('#querybtn');
 
 //We now have all our detached elements inside our variable
 //On click of the filter buttons, let the element prepend the form
+
+//CONTACT
+$('#contact_check').on('click',function(){
+  // if the objet is already in the DOM --> remove
+  if($('#contactfilterid').length){
+    $('#contactfilterid').detach();
+    if($('#filtersform div').length!=0){
+      $('#filtersform').append(querybtn);
+    }else{
+      $('#querybtn').detach();
+    }
+  }else{
+    $('#filtersform').prepend(contact_filter);
+    if($('#filtersform div').length!=0){
+      $('#filtersform').append(querybtn);
+    }else{
+      $('#querybtn').detach();
+    }
+  }
+
+  //toggle its background class
+  $(this).toggleClass("btn-secondary");
+  $(this).toggleClass("btn-outline-secondary");
+})
 
 //COMPANY
 $('#company_check').on('click',function(){
