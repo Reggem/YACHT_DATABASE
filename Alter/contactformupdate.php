@@ -140,6 +140,7 @@ try {
         <option value="<?php echo $result_array["Status"]; ?>" style="visibility:hidden;"  selected>
           <?php echo $result_array["Status"]; ?>
         </option>
+        <option value="Moet Mailen">Moet Mailen</option>
         <option value="Gemaild">Gemaild</option>
         <option value="Gebeld">Gebeld</option>
         <option value="Afspraak">Afspraak</option>

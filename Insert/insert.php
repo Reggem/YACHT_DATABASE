@@ -4,6 +4,8 @@
 
   //Collect the data of the added company
   $addcompName=$addindus=$addnbrEmp=$addcity="";
+  //Collect the data of the added trainee
+  $addtrFname=$addtrLname=$addtrEmail=$addtrKantoor=$addtrTel=$addtrDep="";
   //Collect the data of the contact
   $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie=$addNote=$addStatus="";
   $bedrijf="";
@@ -11,12 +13,19 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
+    if(isset($_POST["traineesubmit"])){
+      $addtrFname = test_input($_POST["traineeFname"]);
+      $addtrLname = test_input($_POST["traineeLname"]);
+      $addtrKantoor = test_input($_POST["traineeKantoor"]);
+      $addtrEmail = test_input($_POST["traineeEmail"]);
+      $addtrTel=test_input($_POST["traineeTel"]);
+      $addtrDep=test_input($_POST["traineeDep"]);
+    }
+
     if(isset($_POST["companysubmit"])){
       $addcompName = test_input($_POST["compname"]);
       $addindus = test_input($_POST["industry"]);
       $addnbrEmp = test_input($_POST["nbrEmp"]);
-
-
     }
 
     if(isset($_POST["contactsubmit"])){
@@ -75,6 +84,15 @@
     }
 
 
+    // Get available Kantoren
+    $queryoffices="SELECT DISTINCT  Stad
+    FROM kantoren ;";
+
+    $sqloffices=$connection->prepare($queryoffices);
+    $sqloffices->execute();
+
+    $avOffices=$sqloffices->fetchall();
+
 ?>
 
 
@@ -87,6 +105,7 @@
 
     <!-- Font awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="../CSS/Style.css">
     <title>Insert data</title>
 
 
@@ -123,6 +142,29 @@
 
 
                 if(isset($_POST["companysubmit"])){
+                  $insert=$connection->prepare($sql);
+                  $insert->execute();
+                }
+
+              } catch (PDOException $e) {
+                  // echo "<div class='text-danger h6'>Echec connection</div>";
+              }
+
+              //add the trainee
+
+              try {
+
+                // Format for the query
+                $tab=array($addtrFname, $addtrLname, $addtrKantoor, $addtrEmail, $addtrTel, $addtrDep);
+                $new_tab="'".implode("', '", $tab)."'";
+
+                // Insert the company
+                $sql="INSERT INTO trainees(Voornaam, Naam, Kantoor, Email, Telefoon, Afdeling)
+                 VALUES($new_tab);";
+
+
+
+                if(isset($_POST["traineesubmit"])){
                   $insert=$connection->prepare($sql);
                   $insert->execute();
                 }
@@ -181,6 +223,7 @@
       <?php
         include("../jssheets.php");
       ?>
+      <script type="text/javascript" src="js.js"></script>
   </body>
 
 </html>

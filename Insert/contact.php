@@ -34,7 +34,7 @@ try {
     <div class="h6">Insert contacts information</div>
     <div class="form-group mb-3">
         <label for="trainee">Added by</label>
-        <select name="trainee" class="form-control" placeholder="Toegevoegd door" required>
+        <select name="trainee" class="form-control" placeholder="Toegevoegd door" onchange="checkAndAddOption(this)" required>
           <?php
             for($i=0;$i<count($avTrainees);$i++){
               echo '<option value="'.$avTrainees[$i]["Trainee"].'">'.$avTrainees[$i]["Trainee"].'</option>';
@@ -111,7 +111,8 @@ try {
     <div class="form-group mb-3">
       <label for="trainee">Status</label>
       <select  name="status" class="form-control">
-        <option value="" selected></option>
+        <!-- <option value="" selected></option> -->
+        <option value="Moet Mailen">Moet Mailen</option>
         <option value="Gemaild">Gemaild</option>
         <option value="Gebeld">Gebeld</option>
         <option value="Gemaild">Afspraak</option>

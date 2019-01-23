@@ -187,6 +187,7 @@
               <!-- STATUS -->
               <label for="status_select">Status</label>
               <select class="form-control custom-select" placeholder="Select status" name="status_select[]" size="3" multiple>
+                <option value="Moet Mailen">Moet Mailen</option>
                 <option value="Gemaild">Gemaild</option>
                 <option value="Gebeld">Gebeld</option>
                 <option value="Afspraak">Afspraak</option>
