@@ -34,7 +34,7 @@ if(isset($_POST["contactupdate"])){
 
   $queryupdate="UPDATE contacts c
   SET Voornaam='$updcontFN' , Naam='$updcontName', Email='$updEmail', Telefoon='$updTel', Afdeling='$updDepartment' , Functie='$updFun', Locatie='$updLocatie', LinkedIn='$updLinkedin', ToegevoegdDoor='$updTrainee',
-  Note='$updNote',Status='$updStatus',LastModified=$updDate,Bedrijf_idBedrijf= (SELECT idCompany
+  Note='$updNote',Status='$updStatus',LastModified='$updDate',Bedrijf_idBedrijf= (SELECT idCompany
                       FROM bedrijven
                       WHERE Bedrijf='$updCompany')
   WHERE CONCAT_WS(' ',Voornaam, Naam)='$contact' ;";
