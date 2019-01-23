@@ -7,7 +7,7 @@
   //Collect the data of the added trainee
   $addtrFname=$addtrLname=$addtrEmail=$addtrKantoor=$addtrTel=$addtrDep="";
   //Collect the data of the contact
-  $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie=$addNote=$addStatus="";
+  $addcontName=$addcontFN=$addFun=$addEmail=$addTel=$addLinkedin=$addDepartment=$addTrainee=$addLocatie=$addNote=$addStatus=$addDate="";
   $bedrijf="";
 
 
@@ -41,6 +41,8 @@
       $addLocatie=test_input($_POST["locatie"]);
       $addNote=test_input($_POST["note"]);
       $addStatus=test_input($_POST["status"]);
+      $addDate=date("Y-m-d");
+
     }
 
     if(isset($_POST["inspectadd"])){
@@ -167,6 +169,7 @@
                 if(isset($_POST["traineesubmit"])){
                   $insert=$connection->prepare($sql);
                   $insert->execute();
+
                 }
 
               } catch (PDOException $e) {
@@ -194,12 +197,12 @@
 
 
                 // Format for the query
-                $tab=array($addcontName, $addcontFN, $addEmail,$addTel,$addFun,$addDepartment, $addTrainee, $addLocatie, $addNote, $addStatus);
+                $tab=array($addcontName, $addcontFN, $addEmail,$addTel,$addFun,$addDepartment, $addTrainee, $addLocatie, $addNote, $addStatus, $addDate);
                 $new_tab="'".implode("', '", $tab)."'";
 
 
                 // if(isset())
-                $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Note,Status, Bedrijf_idBedrijf)
+                $sqlcont="INSERT INTO contacts(Naam, Voornaam, Email,Telefoon,Functie, Afdeling,ToegevoegdDoor, Locatie, Note,Status, LastModified, Bedrijf_idBedrijf)
                  SELECT $new_tab, idCompany FROM bedrijven WHERE Bedrijf='$bedrijf';";
 
 
