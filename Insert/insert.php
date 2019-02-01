@@ -155,16 +155,28 @@
               //add the trainee
 
               try {
+                //get the id of the office
+                $queryidoffices="SELECT DISTINCT  idKantoor
+                FROM kantoren
+                WHERE Stad='$addtrKantoor' ;";
+
+                // echo $queryidoffices;
+
+                $sqlidoffices=$connection->prepare($queryidoffices);
+                $sqlidoffices->execute();
+
+                $avidOffices=$sqlidoffices->fetchall();
+
 
                 // Format for the query
-                $tab=array($addtrFname, $addtrLname, $addtrKantoor, $addtrEmail, $addtrTel, $addtrDep);
+                $tab=array($addtrFname, $addtrLname, $avidOffices[0]["idKantoor"], $addtrEmail, $addtrTel, $addtrDep);
                 $new_tab="'".implode("', '", $tab)."'";
 
                 // Insert the company
-                $sql="INSERT INTO trainees(Voornaam, Naam, Kantoor, Email, Telefoon, Afdeling)
+                $sql="INSERT INTO trainees(Voornaam, Naam, idKantoor, Email, Telefoon, Afdeling)
                  VALUES($new_tab);";
 
-
+                // echo $sql;
 
                 if(isset($_POST["traineesubmit"])){
                   $insert=$connection->prepare($sql);
